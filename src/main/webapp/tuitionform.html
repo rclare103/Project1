@@ -1,0 +1,82 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <link rel="stylesheet" href="CSS/tuitioncss.css">
+    </head>
+<body>
+
+<h2>Employee Tuition Reimbursement Form</h2>
+
+<form action="/action_page.php">
+<div align="left">
+  <label for="firstname">First Name:</label>
+  <br>
+  <input type="text" name="firstname" value="">
+  <br>
+  <label for="lastname">Last Name:</label>
+  <br>
+  <input type="text" name="lastname" value="">
+  <br>
+  <label for="employeeID">Employee ID:</label>
+  <br>
+  <input type="text" name="employeeID" value="">
+  <br>
+  <label for="location">Location:</label>
+  <br>
+  <input type="text" name="location" value="">
+  <br>
+  <br>
+</div>
+<div align="left">
+  <label align="left">Current available reimbursement amount: 1000</label>
+</div>
+
+<div align="left">
+        <p>Date Submitted: <br> 
+          <input type="date" name="dateSubmitted"></p>   
+      </div>
+
+<div align="left">
+  <p>Date Completed: <br> 
+    <input type="date" name="dateCompleted"></p>   
+</div>
+  <div class="form-group" align="left">
+    <label for="eventDescription">
+        Event Description:</label>
+        <br>
+    <textarea class="form-control" type="textarea" name="eventDescription"
+    id="eventDesc" placeholder="Enter the event description:"
+    maxlength="6000" rows="7" cols="50"></textarea>
+</div>
+<div align="left">
+   <p>Type of event for reimbursement</p>
+  <input type="radio" name="businessFields" value="univCourse" > University Course <br>
+  <input type="radio" name="businessFields" value="seminars"> Seminar <br>
+  <input type="radio" name="businessFields" value="certifcation_prep"> Certification Preparation <br>
+  <input type="radio" name="businessFields" value="certification" > Certification <br>
+  <input type="radio" name="businessFields" value="technical_training"> Technical Training <br>
+  <input type="radio" name="businessFields" value="other"> Other <br>
+</div>
+<br>
+<div align="left">
+        <p>Grading Format</p>
+       <input type="radio" name="gradingFormat" value="A - F" > A - F <br>
+       <input type="radio" name="gradingFormat" value="Presentation"> Presentation <br>
+     </div>
+
+  <br>
+  <div align="left">
+  Event Cost:<br>
+  <input type="text" name="eventCost" placeholder="0">
+  <br>
+  <br>
+</div>
+  <input type="submit" value="Request Approval">
+
+</form> 
+
+
+
+
+</body>
+</html>
