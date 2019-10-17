@@ -1,9 +1,11 @@
 package com.revature.dao;
 
 import java.sql.Connection;
+import java.sql.Date;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
+import java.sql.Time;
 import java.time.LocalDate;
 import java.util.ArrayList;
 import java.util.List;
@@ -15,7 +17,7 @@ import com.revature.util.ConnectionFactory;
 public class reDaoImpl implements reDao {
 	/*
 	 * reimbursement Dao
-	 * table reimbursement:
+	 * table Reimbursements:
 	 * rID serial primary key,
 	 * userID integer references Users(userID),
 	 * eventDate date not null,
@@ -32,25 +34,119 @@ public class reDaoImpl implements reDao {
 	
 	@Override
 	public Reimbursement getReimbursement(int rID) {
-		// TODO Auto-generated method stub
-		return null;
+		String sql = "select * from Reimbursements where rID = ?";
+		PreparedStatement stmt;
+		Reimbursement re = null;
+		
+		try {
+			stmt = conn.prepareStatement(sql);
+			stmt.setInt(1, rID);
+			ResultSet rs = stmt.executeQuery();
+			while (rs.next()) {
+				re.setrID(rs.getInt(1));
+				re.setUserID(rs.getInt(2));
+				re.setEventDate(rs.getDate(3).toLocalDate());
+				re.setEventTime(rs.getTime(4).toLocalTime());
+				re.setLocation(rs.getString(5));
+				re.setDescription(rs.getString(6));
+				re.setCost(rs.getDouble(7));
+				re.setGradingFormat(rs.getString(8));
+				re.setJustification(rs.getString(9));
+				re.setSubmissionDate(rs.getDate(10).toLocalDate());
+				re.setStatus(rs.getString(11));
+			}
+		} catch (SQLException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+		return re;
 	}
 
 	@Override
-	public void createReimbursement() {
-		// TODO Auto-generated method stub
+	public void createReimbursement(Reimbursement re) {
+		String sql = "insert into Reimbursements (rID, userID, eventDate, eventTime, location, "
+				+ "description, cost, gradingFormat, justification, submissionDate, status) "
+				+ "values (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?)";
+		PreparedStatement stmt;
+		
+		try {
+			stmt = conn.prepareStatement(sql);
+			stmt.setInt(1, re.getrID());
+			stmt.setInt(2, re.getUserID());
+			stmt.setDate(3, Date.valueOf(re.getEventDate()));
+			stmt.setTime(4, Time.valueOf(re.getEventTime()));
+			stmt.setString(5,  re.getLocation());
+			stmt.setString(6, re.getDescription());
+			stmt.setDouble(7, re.getCost());
+			stmt.setString(8, re.getGradingFormat());
+			stmt.setString(9, re.getJustification());
+			stmt.setDate(10, Date.valueOf(re.getSubmissionDate()));
+			stmt.setString(11, re.getStatus());
+			stmt.executeUpdate();
+		} catch (SQLException e) {
+			e.printStackTrace();
+		}
+		
 
 	}
 
 	@Override
 	public List<Reimbursement> getAllReimbursements() {
-		// TODO Auto-generated method stub
-		return null;
+		String sql = "select * from Reimbursements";
+		List<Reimbursement> reList = new ArrayList<>();
+		PreparedStatement stmt;
+		
+		try {
+			stmt = conn.prepareStatement(sql);
+			ResultSet rs = stmt.executeQuery();
+			while(rs.next()) {
+				Reimbursement re = new Reimbursement();
+				re.setrID(rs.getInt(1));
+				re.setUserID(rs.getInt(2));
+				re.setEventDate(rs.getDate(3).toLocalDate());
+				re.setEventTime(rs.getTime(4).toLocalTime());
+				re.setLocation(rs.getString(5));
+				re.setDescription(rs.getString(6));
+				re.setCost(rs.getDouble(7));
+				re.setGradingFormat(rs.getString(8));
+				re.setJustification(rs.getString(9));
+				re.setSubmissionDate(rs.getDate(10).toLocalDate());
+				re.setStatus(rs.getString(11));
+				reList.add(re);
+			}
+		} catch (SQLException e) {
+			e.printStackTrace();
+		}
+		
+		
+		return reList;
 	}
 
 	@Override
 	public void updateReimbursement(Reimbursement re) {
-		// TODO Auto-generated method stub
+		String sql = "update Reimbursements " 
+				+ "userID = ?, eventDate = ?, eventTime = ?, location = ?, description = ?, "
+				+ "cost = ?, grading Format = ?, justification = ?, submissionDate = ?, status = ?"
+				+ "where rID = ?";
+		PreparedStatement stmt;
+		
+		try {
+			stmt = conn.prepareStatement(sql);			
+			stmt.setInt(1, re.getUserID());
+			stmt.setDate(2, Date.valueOf(re.getEventDate()));
+			stmt.setTime(3, Time.valueOf(re.getEventTime()));
+			stmt.setString(4,  re.getLocation());
+			stmt.setString(5, re.getDescription());
+			stmt.setDouble(6, re.getCost());
+			stmt.setString(7, re.getGradingFormat());
+			stmt.setString(8, re.getJustification());
+			stmt.setDate(9, Date.valueOf(re.getSubmissionDate()));
+			stmt.setString(10, re.getStatus());
+			stmt.setInt(11, re.getrID());
+			stmt.executeUpdate();
+		} catch (SQLException e) {
+			e.printStackTrace();
+		}
 
 	}
 

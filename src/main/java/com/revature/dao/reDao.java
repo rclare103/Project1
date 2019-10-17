@@ -10,7 +10,7 @@ public interface reDao {
 	
 	public Reimbursement getReimbursement(int rID);
 	
-	public void createReimbursement();
+	public void createReimbursement(Reimbursement re);
 	
 	public List<Reimbursement> getAllReimbursements();
 	
