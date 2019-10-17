@@ -14,6 +14,8 @@ public class Reimbursement {
 	private String gradingFormat;
 	private String justification;
 	private LocalDate submissionDate;
+	private String status;
+	
 	public int getrID() {
 		return rID;
 	}
@@ -74,30 +76,12 @@ public class Reimbursement {
 	public void setSubmissionDate(LocalDate submissionDate) {
 		this.submissionDate = submissionDate;
 	}
-	public Reimbursement(int rID, int userID, LocalDate eventDate, LocalTime eventTime, String location,
-			String description, double cost, String gradingFormat, String justification, LocalDate submissionDate) {
-		super();
-		this.rID = rID;
-		this.userID = userID;
-		this.eventDate = eventDate;
-		this.eventTime = eventTime;
-		this.location = location;
-		this.description = description;
-		this.cost = cost;
-		this.gradingFormat = gradingFormat;
-		this.justification = justification;
-		this.submissionDate = submissionDate;
+	
+	public String getStatus() {
+		return status;
 	}
-	public Reimbursement() {
-		super();
-		// TODO Auto-generated constructor stub
-	}
-	@Override
-	public String toString() {
-		return "Reimbursement [rID=" + rID + ", userID=" + userID + ", eventDate=" + eventDate + ", eventTime="
-				+ eventTime + ", location=" + location + ", description=" + description + ", cost=" + cost
-				+ ", gradingFormat=" + gradingFormat + ", justification=" + justification + ", submissionDate="
-				+ submissionDate + "]";
+	public void setStatus(String status) {
+		this.status = status;
 	}
 	@Override
 	public int hashCode() {
@@ -113,6 +97,7 @@ public class Reimbursement {
 		result = prime * result + ((justification == null) ? 0 : justification.hashCode());
 		result = prime * result + ((location == null) ? 0 : location.hashCode());
 		result = prime * result + rID;
+		result = prime * result + ((status == null) ? 0 : status.hashCode());
 		result = prime * result + ((submissionDate == null) ? 0 : submissionDate.hashCode());
 		result = prime * result + userID;
 		return result;
@@ -160,6 +145,11 @@ public class Reimbursement {
 			return false;
 		if (rID != other.rID)
 			return false;
+		if (status == null) {
+			if (other.status != null)
+				return false;
+		} else if (!status.equals(other.status))
+			return false;
 		if (submissionDate == null) {
 			if (other.submissionDate != null)
 				return false;
@@ -169,7 +159,33 @@ public class Reimbursement {
 			return false;
 		return true;
 	}
-	
+	@Override
+	public String toString() {
+		return "Reimbursement [rID=" + rID + ", userID=" + userID + ", eventDate=" + eventDate + ", eventTime="
+				+ eventTime + ", location=" + location + ", description=" + description + ", cost=" + cost
+				+ ", gradingFormat=" + gradingFormat + ", justification=" + justification + ", submissionDate="
+				+ submissionDate + ", status=" + status + "]";
+	}
+	public Reimbursement(int rID, int userID, LocalDate eventDate, LocalTime eventTime, String location,
+			String description, double cost, String gradingFormat, String justification, LocalDate submissionDate,
+			String status) {
+		super();
+		this.rID = rID;
+		this.userID = userID;
+		this.eventDate = eventDate;
+		this.eventTime = eventTime;
+		this.location = location;
+		this.description = description;
+		this.cost = cost;
+		this.gradingFormat = gradingFormat;
+		this.justification = justification;
+		this.submissionDate = submissionDate;
+		this.status = status;
+	}
+	public Reimbursement() {
+		super();
+		// TODO Auto-generated constructor stub
+	}
 	
 	
 }

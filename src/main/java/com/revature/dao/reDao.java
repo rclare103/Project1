@@ -3,6 +3,7 @@ package com.revature.dao;
 import java.util.List;
 
 import com.revature.pojo.Reimbursement;
+import com.revature.pojo.User;
 
 public interface reDao {
 	//reimbursement Dao
@@ -13,10 +14,11 @@ public interface reDao {
 	
 	public List<Reimbursement> getAllReimbursements();
 	
-	public List<Reimbursement> getReimbursementByUser();
+	public void updateReimbursement(Reimbursement re);
 	
-	public void updateReimbursement();
+	public void deleteReimbursement(Reimbursement re);
 	
-	public void deleteReimbursement();
+	public List<Reimbursement> getReimbursementByUser(User user);
+	
 	
 }
