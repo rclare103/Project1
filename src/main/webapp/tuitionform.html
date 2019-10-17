@@ -1,7 +1,8 @@
 <!DOCTYPE html>
 <html>
     <head>
-        <link rel="stylesheet" href="CSS/tuitioncss.css">
+      <title>Reimbursement Form</title>
+        <link rel="stylesheet" type="text/css" href="CSS/tuitioncss.css">
     </head>
 <body>
 
@@ -27,6 +28,12 @@
   <br>
   <br>
 </div>
+
+<div align="left">
+    Event Cost:<br>
+    <input type="text" name="eventCost">
+    <br>
+  </div>
 <div align="left">
   <label align="left">Current available reimbursement amount: 1000</label>
 </div>
@@ -45,7 +52,7 @@
         Event Description:</label>
         <br>
     <textarea class="form-control" type="textarea" name="eventDescription"
-    id="eventDesc" placeholder="Enter the event description:"
+    id="eventDesc"
     maxlength="6000" rows="7" cols="50"></textarea>
 </div>
 <div align="left">
@@ -65,12 +72,6 @@
      </div>
 
   <br>
-  <div align="left">
-  Event Cost:<br>
-  <input type="text" name="eventCost" placeholder="0">
-  <br>
-  <br>
-</div>
   <input type="submit" value="Request Approval">
 
 </form> 

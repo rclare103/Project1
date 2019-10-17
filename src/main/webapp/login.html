@@ -1,53 +1,32 @@
 <!DOCTYPE html>
-<html>
-    <head>
-        <link rel="stylesheet" href="CSS/logincss.css">
-    </head>
+<!--[if lt IE 7 ]> <html lang="en" class="ie6 ielt8"> <![endif]-->
+<!--[if IE 7 ]>    <html lang="en" class="ie7 ielt8"> <![endif]-->
+<!--[if IE 8 ]>    <html lang="en" class="ie8"> <![endif]-->
+<!--[if (gte IE 9)|!(IE)]><!--> <html lang="en"> <!--<![endif]-->
+<head>
+<meta charset="utf-8">
+<title>Login</title>
+<link rel="stylesheet" type="text/css" href="CSS/logincss.css" />
+</head>
 <body>
-
-<button onclick="document.getElementById('id01').style.display='block'">Login</button>
-
-<!-- The Modal -->
-<div id="id01" class="modal">
-  <span onclick="document.getElementById('id01').style.display='none'"
-class="close" title="Close Modal">&times;</span>
-
-  <!-- Modal Content -->
-  <form class="modal-content animate" action="/action_page.php">
-    <div class="imgcontainer">
-      <img src="img_avatar2.png" alt="Avatar" class="avatar">
-    </div>
-
-    <div class="container">
-      <label for="uname"><b>Username</b></label>
-      <input type="text" placeholder="Enter Username" name="uname" required>
-
-      <label for="psw"><b>Password</b></label>
-      <input type="password" placeholder="Enter Password" name="psw" required>
-
-      <button type="submit">Login</button>
-      <label>
-        <input type="checkbox" checked="checked" name="remember"> Remember me
-      </label>
-    </div>
-
-    <div class="container" style="background-color:#f1f1f1">
-      <button type="button" onclick="document.getElementById('id01').style.display='none'" class="cancelbtn">Cancel</button>
-      <span class="psw">Forgot <a href="#">password?</a></span>
-    </div>
-  </form>
-</div>
+<div class="container">
+	<section id="content">
+		<form action="">
+			<h1>Login Form</h1>
+			<div>
+				<input type="text" placeholder="Username" required="" id="username" />
+			</div>
+			<div>
+				<input type="password" placeholder="Password" required="" id="password" />
+			</div>
+			<div>
+				<input type="submit" value="Log in" />
+				<a href="#">Lost your password?</a>
+				<a href="#">Register</a>
+			</div>
+		</form><!-- form -->
+		
+	</section><!-- content -->
+</div><!-- container -->
 </body>
-
-
-<script>
-        // Get the modal
-        var modal = document.getElementById('id01');
-        
-        // When the user clicks anywhere outside of the modal, close it
-        window.onclick = function(event) {
-          if (event.target == modal) {
-            modal.style.display = "none";
-          }
-        }
-        </script>
+</html>
