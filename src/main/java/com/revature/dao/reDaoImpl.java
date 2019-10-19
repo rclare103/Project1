@@ -18,16 +18,20 @@ public class reDaoImpl implements reDao {
 	/*
 	 * reimbursement Dao
 	 * table Reimbursements:
-	 * rID serial primary key,
-	 * userID integer references Users(userID),
-	 * eventDate date not null,
-	 * eventTime time not null,
-	 * location varchar not null,
-	 * description varchar not null,
-	 * cost numeric not null,
-	 * gradingFormat varchar not null,
-	 * justification varchar not null,
-	 * submissionDate date default current_date
+	 * 1. rID serial primary key,
+	 * 2. userID integer references Users(userID),
+	 * 3. eventDate date not null,
+	 * 4. eventTime time not null,
+	 * 5. location varchar not null,
+	 * 6. description varchar not null,
+	 * 7. cost numeric not null,
+	 * 8. gradingFormat varchar not null,
+	 * 9. justification varchar not null,
+	 * 10. submissionDate date not null,
+	 * 11. submissionTime Time not null,
+	 * 12. dsStatus varchar not null,
+	 * 13. dhStatus varchar not null,
+	 * 14. bcStatus varchar not null
 	 */
 	
 	private static Connection conn = ConnectionFactory.getConnection();
@@ -53,7 +57,10 @@ public class reDaoImpl implements reDao {
 				re.setGradingFormat(rs.getString(8));
 				re.setJustification(rs.getString(9));
 				re.setSubmissionDate(rs.getDate(10).toLocalDate());
-				re.setStatus(rs.getString(11));
+				re.setSubmissionTime(rs.getTime(11).toLocalTime());
+				re.setDsStatus(rs.getString(12));
+				re.setDhStatus(rs.getString(13));
+				re.setBcStatus(rs.getString(14));
 			}
 		} catch (SQLException e) {
 			// TODO Auto-generated catch block
@@ -65,8 +72,9 @@ public class reDaoImpl implements reDao {
 	@Override
 	public void createReimbursement(Reimbursement re) {
 		String sql = "insert into Reimbursements (rID, userID, eventDate, eventTime, location, "
-				+ "description, cost, gradingFormat, justification, submissionDate, status) "
-				+ "values (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?)";
+				+ "description, cost, gradingFormat, justification, submissionDate, "
+				+ "submissionTime, dsStatus, dhStatus, bcStatus) "
+				+ "values (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?)";
 		PreparedStatement stmt;
 		
 		try {
@@ -81,7 +89,10 @@ public class reDaoImpl implements reDao {
 			stmt.setString(8, re.getGradingFormat());
 			stmt.setString(9, re.getJustification());
 			stmt.setDate(10, Date.valueOf(re.getSubmissionDate()));
-			stmt.setString(11, re.getStatus());
+			stmt.setTime(11, Time.valueOf(re.getSubmissionTime()));
+			stmt.setString(12, re.getDsStatus());
+			stmt.setString(13, re.getDhStatus());
+			stmt.setString(14, re.getBcStatus());
 			stmt.executeUpdate();
 		} catch (SQLException e) {
 			e.printStackTrace();
@@ -111,7 +122,10 @@ public class reDaoImpl implements reDao {
 				re.setGradingFormat(rs.getString(8));
 				re.setJustification(rs.getString(9));
 				re.setSubmissionDate(rs.getDate(10).toLocalDate());
-				re.setStatus(rs.getString(11));
+				re.setSubmissionTime(rs.getTime(11).toLocalTime());
+				re.setDsStatus(rs.getString(12));
+				re.setDhStatus(rs.getString(13));
+				re.setBcStatus(rs.getString(14));
 				reList.add(re);
 			}
 		} catch (SQLException e) {
@@ -132,17 +146,20 @@ public class reDaoImpl implements reDao {
 		
 		try {
 			stmt = conn.prepareStatement(sql);			
-			stmt.setInt(1, re.getUserID());
-			stmt.setDate(2, Date.valueOf(re.getEventDate()));
-			stmt.setTime(3, Time.valueOf(re.getEventTime()));
-			stmt.setString(4,  re.getLocation());
-			stmt.setString(5, re.getDescription());
-			stmt.setDouble(6, re.getCost());
-			stmt.setString(7, re.getGradingFormat());
-			stmt.setString(8, re.getJustification());
-			stmt.setDate(9, Date.valueOf(re.getSubmissionDate()));
-			stmt.setString(10, re.getStatus());
-			stmt.setInt(11, re.getrID());
+			stmt.setInt(1, re.getrID());
+			stmt.setInt(2, re.getUserID());
+			stmt.setDate(3, Date.valueOf(re.getEventDate()));
+			stmt.setTime(4, Time.valueOf(re.getEventTime()));
+			stmt.setString(5,  re.getLocation());
+			stmt.setString(6, re.getDescription());
+			stmt.setDouble(7, re.getCost());
+			stmt.setString(8, re.getGradingFormat());
+			stmt.setString(9, re.getJustification());
+			stmt.setDate(10, Date.valueOf(re.getSubmissionDate()));
+			stmt.setTime(11, Time.valueOf(re.getSubmissionTime()));
+			stmt.setString(12, re.getDsStatus());
+			stmt.setString(13, re.getDhStatus());
+			stmt.setString(14, re.getBcStatus());
 			stmt.executeUpdate();
 		} catch (SQLException e) {
 			e.printStackTrace();
@@ -187,7 +204,10 @@ public class reDaoImpl implements reDao {
 				re.setGradingFormat(rs.getString(8));
 				re.setJustification(rs.getString(9));
 				re.setSubmissionDate(rs.getDate(10).toLocalDate());
-				re.setStatus(rs.getString(11));
+				re.setSubmissionTime(rs.getTime(11).toLocalTime());
+				re.setDsStatus(rs.getString(12));
+				re.setDhStatus(rs.getString(13));
+				re.setBcStatus(rs.getString(14));
 				reList.add(re);
 			}
 		} catch (SQLException e) {

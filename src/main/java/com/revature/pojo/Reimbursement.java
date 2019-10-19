@@ -14,7 +14,10 @@ public class Reimbursement {
 	private String gradingFormat;
 	private String justification;
 	private LocalDate submissionDate;
-	private String status;
+	private LocalTime submissionTime;
+	private String dsStatus;
+	private String dhStatus;
+	private String bcStatus;
 	
 	public int getrID() {
 		return rID;
@@ -77,28 +80,49 @@ public class Reimbursement {
 		this.submissionDate = submissionDate;
 	}
 	
-	public String getStatus() {
-		return status;
+	public LocalTime getSubmissionTime() {
+		return submissionTime;
 	}
-	public void setStatus(String status) {
-		this.status = status;
+	public void setSubmissionTime(LocalTime submissionTime) {
+		this.submissionTime = submissionTime;
+	}
+	public String getDsStatus() {
+		return dsStatus;
+	}
+	public void setDsStatus(String dsStatus) {
+		this.dsStatus = dsStatus;
+	}
+	public String getDhStatus() {
+		return dhStatus;
+	}
+	public void setDhStatus(String dhStatus) {
+		this.dhStatus = dhStatus;
+	}
+	public String getBcStatus() {
+		return bcStatus;
+	}
+	public void setBcStatus(String bcStatus) {
+		this.bcStatus = bcStatus;
 	}
 	@Override
 	public int hashCode() {
 		final int prime = 31;
 		int result = 1;
+		result = prime * result + ((bcStatus == null) ? 0 : bcStatus.hashCode());
 		long temp;
 		temp = Double.doubleToLongBits(cost);
 		result = prime * result + (int) (temp ^ (temp >>> 32));
 		result = prime * result + ((description == null) ? 0 : description.hashCode());
+		result = prime * result + ((dhStatus == null) ? 0 : dhStatus.hashCode());
+		result = prime * result + ((dsStatus == null) ? 0 : dsStatus.hashCode());
 		result = prime * result + ((eventDate == null) ? 0 : eventDate.hashCode());
 		result = prime * result + ((eventTime == null) ? 0 : eventTime.hashCode());
 		result = prime * result + ((gradingFormat == null) ? 0 : gradingFormat.hashCode());
 		result = prime * result + ((justification == null) ? 0 : justification.hashCode());
 		result = prime * result + ((location == null) ? 0 : location.hashCode());
 		result = prime * result + rID;
-		result = prime * result + ((status == null) ? 0 : status.hashCode());
 		result = prime * result + ((submissionDate == null) ? 0 : submissionDate.hashCode());
+		result = prime * result + ((submissionTime == null) ? 0 : submissionTime.hashCode());
 		result = prime * result + userID;
 		return result;
 	}
@@ -111,12 +135,27 @@ public class Reimbursement {
 		if (getClass() != obj.getClass())
 			return false;
 		Reimbursement other = (Reimbursement) obj;
+		if (bcStatus == null) {
+			if (other.bcStatus != null)
+				return false;
+		} else if (!bcStatus.equals(other.bcStatus))
+			return false;
 		if (Double.doubleToLongBits(cost) != Double.doubleToLongBits(other.cost))
 			return false;
 		if (description == null) {
 			if (other.description != null)
 				return false;
 		} else if (!description.equals(other.description))
+			return false;
+		if (dhStatus == null) {
+			if (other.dhStatus != null)
+				return false;
+		} else if (!dhStatus.equals(other.dhStatus))
+			return false;
+		if (dsStatus == null) {
+			if (other.dsStatus != null)
+				return false;
+		} else if (!dsStatus.equals(other.dsStatus))
 			return false;
 		if (eventDate == null) {
 			if (other.eventDate != null)
@@ -145,15 +184,15 @@ public class Reimbursement {
 			return false;
 		if (rID != other.rID)
 			return false;
-		if (status == null) {
-			if (other.status != null)
-				return false;
-		} else if (!status.equals(other.status))
-			return false;
 		if (submissionDate == null) {
 			if (other.submissionDate != null)
 				return false;
 		} else if (!submissionDate.equals(other.submissionDate))
+			return false;
+		if (submissionTime == null) {
+			if (other.submissionTime != null)
+				return false;
+		} else if (!submissionTime.equals(other.submissionTime))
 			return false;
 		if (userID != other.userID)
 			return false;
@@ -164,11 +203,12 @@ public class Reimbursement {
 		return "Reimbursement [rID=" + rID + ", userID=" + userID + ", eventDate=" + eventDate + ", eventTime="
 				+ eventTime + ", location=" + location + ", description=" + description + ", cost=" + cost
 				+ ", gradingFormat=" + gradingFormat + ", justification=" + justification + ", submissionDate="
-				+ submissionDate + ", status=" + status + "]";
+				+ submissionDate + ", submissionTime=" + submissionTime + ", dsStatus=" + dsStatus + ", dhStatus="
+				+ dhStatus + ", bcStatus=" + bcStatus + "]";
 	}
 	public Reimbursement(int rID, int userID, LocalDate eventDate, LocalTime eventTime, String location,
 			String description, double cost, String gradingFormat, String justification, LocalDate submissionDate,
-			String status) {
+			LocalTime submissionTime, String dsStatus, String dhStatus, String bcStatus) {
 		super();
 		this.rID = rID;
 		this.userID = userID;
@@ -180,12 +220,17 @@ public class Reimbursement {
 		this.gradingFormat = gradingFormat;
 		this.justification = justification;
 		this.submissionDate = submissionDate;
-		this.status = status;
+		this.submissionTime = submissionTime;
+		this.dsStatus = dsStatus;
+		this.dhStatus = dhStatus;
+		this.bcStatus = bcStatus;
 	}
 	public Reimbursement() {
 		super();
 		// TODO Auto-generated constructor stub
 	}
+	
+	
 	
 	
 }
