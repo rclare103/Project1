@@ -16,45 +16,46 @@ public class UserServiceImpl implements UserService {
 	
 	@Override
 	public User loginUser(String username, String password) {
-		// TODO Auto-generated method stub
+		System.out.println("Attempted login with credentials: Username - " + username + " Password - " + password);
+		
+		User user = userDao.getUser(username);
+		
+		if ((user != null) && (user.getPassword().equals(password))) {
+			return user;
+		}
+		
 		return null;
 	}
 	
 	
 	@Override
 	public User getUserByUsername(String username) {
-		// TODO Auto-generated method stub
-		return null;
+		return userDao.getUser(username);
 	}
 
 	@Override
 	public User getUserByID(int userID) {
-		// TODO Auto-generated method stub
-		return null;
+		return userDao.getUser(userID);
 	}
 
 	@Override
 	public void makeUser(User user) {
-		// TODO Auto-generated method stub
-		
+		userDao.createUser(user);
 	}
 
 	@Override
 	public List<User> getAllUsers() {
-		// TODO Auto-generated method stub
-		return null;
+		return userDao.getAllUsers();
 	}
 
 	@Override
-	public void updateUser() {
-		// TODO Auto-generated method stub
-		
+	public void updateUser(User user) {
+		userDao.updateUser(user);
 	}
 
 	@Override
-	public void deleteUser() {
-		// TODO Auto-generated method stub
-		
+	public void deleteUser(User user) {
+		userDao.deleteUser(user);
 	}
 
 }
