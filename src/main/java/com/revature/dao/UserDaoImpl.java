@@ -9,10 +9,13 @@ import java.util.List;
 
 import com.revature.pojo.User;
 import com.revature.util.ConnectionFactory;
+import com.revature.util.ReimbursementCalculatorImpl;
 
 public class UserDaoImpl implements UserDao {
 	
 	private static Connection conn = ConnectionFactory.getConnection();
+	private static reDaoImpl reDao = new reDaoImpl();
+	private static ReimbursementCalculatorImpl reCalc = new ReimbursementCalculatorImpl();
 	/*
 	 * Table Users: 
 	 * 1. userID serial primary key, 
@@ -50,6 +53,8 @@ public class UserDaoImpl implements UserDao {
 		} catch (SQLException e) {
 			e.printStackTrace();
 		}
+		user.setReimbursements(reDao.getReimbursementByUser(user));
+		
 		return user;
 	}
 	

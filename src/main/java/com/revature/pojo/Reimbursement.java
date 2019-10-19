@@ -6,6 +6,7 @@ import java.time.LocalTime;
 public class Reimbursement {
 	private int rID;
 	private int userID;
+	private String eventType;
 	private LocalDate eventDate;
 	private LocalTime eventTime;
 	private String location;
@@ -30,6 +31,13 @@ public class Reimbursement {
 	}
 	public void setUserID(int userID) {
 		this.userID = userID;
+	}
+	
+	public String getEventType() {
+		return eventType;
+	}
+	public void setEventType(String eventType) {
+		this.eventType = eventType;
 	}
 	public LocalDate getEventDate() {
 		return eventDate;
@@ -117,6 +125,7 @@ public class Reimbursement {
 		result = prime * result + ((dsStatus == null) ? 0 : dsStatus.hashCode());
 		result = prime * result + ((eventDate == null) ? 0 : eventDate.hashCode());
 		result = prime * result + ((eventTime == null) ? 0 : eventTime.hashCode());
+		result = prime * result + ((eventType == null) ? 0 : eventType.hashCode());
 		result = prime * result + ((gradingFormat == null) ? 0 : gradingFormat.hashCode());
 		result = prime * result + ((justification == null) ? 0 : justification.hashCode());
 		result = prime * result + ((location == null) ? 0 : location.hashCode());
@@ -167,6 +176,11 @@ public class Reimbursement {
 				return false;
 		} else if (!eventTime.equals(other.eventTime))
 			return false;
+		if (eventType == null) {
+			if (other.eventType != null)
+				return false;
+		} else if (!eventType.equals(other.eventType))
+			return false;
 		if (gradingFormat == null) {
 			if (other.gradingFormat != null)
 				return false;
@@ -200,18 +214,19 @@ public class Reimbursement {
 	}
 	@Override
 	public String toString() {
-		return "Reimbursement [rID=" + rID + ", userID=" + userID + ", eventDate=" + eventDate + ", eventTime="
-				+ eventTime + ", location=" + location + ", description=" + description + ", cost=" + cost
-				+ ", gradingFormat=" + gradingFormat + ", justification=" + justification + ", submissionDate="
-				+ submissionDate + ", submissionTime=" + submissionTime + ", dsStatus=" + dsStatus + ", dhStatus="
-				+ dhStatus + ", bcStatus=" + bcStatus + "]";
+		return "Reimbursement [rID=" + rID + ", userID=" + userID + ", eventType=" + eventType + ", eventDate="
+				+ eventDate + ", eventTime=" + eventTime + ", location=" + location + ", description=" + description
+				+ ", cost=" + cost + ", gradingFormat=" + gradingFormat + ", justification=" + justification
+				+ ", submissionDate=" + submissionDate + ", submissionTime=" + submissionTime + ", dsStatus=" + dsStatus
+				+ ", dhStatus=" + dhStatus + ", bcStatus=" + bcStatus + "]";
 	}
-	public Reimbursement(int rID, int userID, LocalDate eventDate, LocalTime eventTime, String location,
-			String description, double cost, String gradingFormat, String justification, LocalDate submissionDate,
-			LocalTime submissionTime, String dsStatus, String dhStatus, String bcStatus) {
+	public Reimbursement(int rID, int userID, String eventType, LocalDate eventDate, LocalTime eventTime,
+			String location, String description, double cost, String gradingFormat, String justification,
+			LocalDate submissionDate, LocalTime submissionTime, String dsStatus, String dhStatus, String bcStatus) {
 		super();
 		this.rID = rID;
 		this.userID = userID;
+		this.eventType = eventType;
 		this.eventDate = eventDate;
 		this.eventTime = eventTime;
 		this.location = location;
@@ -229,6 +244,7 @@ public class Reimbursement {
 		super();
 		// TODO Auto-generated constructor stub
 	}
+	
 	
 	
 	

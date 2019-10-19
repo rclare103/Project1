@@ -14,7 +14,7 @@ public class User {
 	private int departmentHead;
 	private String role;
 	private double availableReimbursement;
-	private List<Reimbursement> acceptedReimbursement;
+	private List<Reimbursement> reimbursements;
 	
 	public int getUserID() {
 		return userID;
@@ -72,11 +72,11 @@ public class User {
 	}
 	
 	
-	public List<Reimbursement> getAcceptedReimbursement() {
-		return acceptedReimbursement;
+	public List<Reimbursement> getReimbursements() {
+		return this.reimbursements;
 	}
-	public void setAcceptedReimbursement(List<Reimbursement> acceptedReimbursement) {
-		this.acceptedReimbursement = acceptedReimbursement;
+	public void setReimbursements(List<Reimbursement> reimbursements) {
+		this.reimbursements = reimbursements;
 	}
 	
 	public User(int userID, String username, String password, String firstName, String lastName, int supervisor,
@@ -107,7 +107,7 @@ public class User {
 		this.departmentHead = departmentHead;
 		this.role = role;
 		this.availableReimbursement = availableReimbursement;
-		this.acceptedReimbursement = acceptedReimbursement;
+		this.reimbursements = acceptedReimbursement;
 	}
 	public User() {
 		super();
@@ -117,7 +117,7 @@ public class User {
 	public int hashCode() {
 		final int prime = 31;
 		int result = 1;
-		result = prime * result + ((acceptedReimbursement == null) ? 0 : acceptedReimbursement.hashCode());
+		result = prime * result + ((reimbursements == null) ? 0 : reimbursements.hashCode());
 		long temp;
 		temp = Double.doubleToLongBits(availableReimbursement);
 		result = prime * result + (int) (temp ^ (temp >>> 32));
@@ -140,10 +140,10 @@ public class User {
 		if (getClass() != obj.getClass())
 			return false;
 		User other = (User) obj;
-		if (acceptedReimbursement == null) {
-			if (other.acceptedReimbursement != null)
+		if (reimbursements == null) {
+			if (other.reimbursements != null)
 				return false;
-		} else if (!acceptedReimbursement.equals(other.acceptedReimbursement))
+		} else if (!reimbursements.equals(other.reimbursements))
 			return false;
 		if (Double.doubleToLongBits(availableReimbursement) != Double.doubleToLongBits(other.availableReimbursement))
 			return false;
@@ -185,7 +185,7 @@ public class User {
 		return "User [userID=" + userID + ", username=" + username + ", password=" + password + ", firstName="
 				+ firstName + ", lastName=" + lastName + ", supervisor=" + supervisor + ", departmentHead="
 				+ departmentHead + ", role=" + role + ", availableReimbursement=" + availableReimbursement
-				+ ", acceptedReimbursement=" + acceptedReimbursement + "]";
+				+ ", reimbursements=" + reimbursements + "]";
 	}
 	
 	
