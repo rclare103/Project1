@@ -11,15 +11,15 @@ public class Driver {
 	
 	public static void main(String[] args) {
 		
-		User user = new User(2, "test", "test", "test", "test", 1, 1, "test", 1000.0);
-		userDao.createUser(user);
+		/*
+		 * User user = new User(2, "test", "test", "test", "test", 1, 1, "test",
+		 * 1000.0); userDao.createUser(user);
+		 */
 		
-		user = userDao.getUser("test");
+		String username = "testUser";
+		String password = "testPassword";
+		User user = userService.loginUser(username, password);
 		System.out.println(user.getFirstName());
-		
-		User user2 = new User();
-		user2 = userService.loginUser("testUser", "testPassword");
-		System.out.println(user2.getFirstName());
 		
 	}
 }

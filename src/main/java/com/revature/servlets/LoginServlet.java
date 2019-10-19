@@ -17,6 +17,7 @@ public class LoginServlet extends HttpServlet {
 	private static final long serialVersionUID = 1L;
     
 	private static UserServiceImpl userService = new UserServiceImpl();
+	private User user = new User();
 	
     /**
      * @see HttpServlet#HttpServlet()
@@ -40,14 +41,14 @@ public class LoginServlet extends HttpServlet {
 	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		String username = request.getParameter("username");
 		String password = request.getParameter("password");
-		System.out.println(username + ".");
-		System.out.println(password + ".");
-		User user2 = userService.loginUser("testUser", "testPassword");
-		System.out.println(user2.getFirstName());
-		if (user2 != null) {
+		info(username + ".");
+		info(password + ".");
+		user = userService.loginUser(username, password);
+		info(user.getFirstName() + ".");
+		if (user != null) {
 			 System.out.println("in if statement");
 			 //request.getSession().setAttribute("user", user);
-			 if (user2.getUsername().equals("testUser")) {
+			 if (user.getUsername().equals("testUser")) {
 				 response.sendRedirect("home");
 			 } else {
 				 //response.sendRedirect("emp"); 
