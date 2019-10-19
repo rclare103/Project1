@@ -8,6 +8,8 @@ import com.revature.pojo.User;
 public interface UserDao {
 	public User getUser(String username);
 	
+	public User getUser(int userID);
+	
 	public void createUser(User user);
 	
 	public List<User> getAllUsers();

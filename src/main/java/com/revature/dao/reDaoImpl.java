@@ -139,27 +139,28 @@ public class reDaoImpl implements reDao {
 	@Override
 	public void updateReimbursement(Reimbursement re) {
 		String sql = "update Reimbursements " 
-				+ "userID = ?, eventDate = ?, eventTime = ?, location = ?, description = ?, "
-				+ "cost = ?, grading Format = ?, justification = ?, submissionDate = ?, status = ?"
+				+ "set userID = ?, eventDate = ?, eventTime = ?, location = ?, description = ?, "
+				+ "cost = ?, grading Format = ?, justification = ?, submissionDate = ?, "
+				+ "submissionTime = ?, dsStatus = ?, dhStatus = ?, bcStatus = ? "
 				+ "where rID = ?";
 		PreparedStatement stmt;
 		
 		try {
 			stmt = conn.prepareStatement(sql);			
-			stmt.setInt(1, re.getrID());
-			stmt.setInt(2, re.getUserID());
-			stmt.setDate(3, Date.valueOf(re.getEventDate()));
-			stmt.setTime(4, Time.valueOf(re.getEventTime()));
-			stmt.setString(5,  re.getLocation());
-			stmt.setString(6, re.getDescription());
-			stmt.setDouble(7, re.getCost());
-			stmt.setString(8, re.getGradingFormat());
-			stmt.setString(9, re.getJustification());
-			stmt.setDate(10, Date.valueOf(re.getSubmissionDate()));
-			stmt.setTime(11, Time.valueOf(re.getSubmissionTime()));
-			stmt.setString(12, re.getDsStatus());
-			stmt.setString(13, re.getDhStatus());
-			stmt.setString(14, re.getBcStatus());
+			stmt.setInt(1, re.getUserID());
+			stmt.setDate(2, Date.valueOf(re.getEventDate()));
+			stmt.setTime(3, Time.valueOf(re.getEventTime()));
+			stmt.setString(4,  re.getLocation());
+			stmt.setString(5, re.getDescription());
+			stmt.setDouble(6, re.getCost());
+			stmt.setString(7, re.getGradingFormat());
+			stmt.setString(8, re.getJustification());
+			stmt.setDate(9, Date.valueOf(re.getSubmissionDate()));
+			stmt.setTime(10, Time.valueOf(re.getSubmissionTime()));
+			stmt.setString(11, re.getDsStatus());
+			stmt.setString(12, re.getDhStatus());
+			stmt.setString(13, re.getBcStatus());
+			stmt.setInt(14, re.getrID());
 			stmt.executeUpdate();
 		} catch (SQLException e) {
 			e.printStackTrace();
