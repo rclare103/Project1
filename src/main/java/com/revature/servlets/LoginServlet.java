@@ -8,6 +8,7 @@ import javax.servlet.http.HttpServletResponse;
 
 import com.revature.pojo.User;
 import com.revature.service.UserServiceImpl;
+import static com.revature.util.LoggerUtil.*;
 
 /**
  * Servlet implementation class LoginServlet
@@ -30,7 +31,7 @@ public class LoginServlet extends HttpServlet {
 	 */
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		// TODO Auto-generated method stub
-		response.getWriter().append("Served at: ").append(request.getContextPath());
+		response.getWriter().write("doGet");
 	}
 
 	/**
@@ -39,12 +40,15 @@ public class LoginServlet extends HttpServlet {
 	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		String username = request.getParameter("username");
 		String password = request.getParameter("password");
-		User user = userService.loginUser(username, password);
-		if (user != null) {
-			 request.getSession().setAttribute("user", user);
-			 if (user.getUsername().equals("testUser")) {
-				 response.getWriter().write("yay");
-				 //response.sendRedirect("man");
+		System.out.println(username + ".");
+		System.out.println(password + ".");
+		User user2 = userService.loginUser("testUser", "testPassword");
+		System.out.println(user2.getFirstName());
+		if (user2 != null) {
+			 System.out.println("in if statement");
+			 //request.getSession().setAttribute("user", user);
+			 if (user2.getUsername().equals("testUser")) {
+				 response.sendRedirect("home");
 			 } else {
 				 //response.sendRedirect("emp"); 
 			 }

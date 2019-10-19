@@ -53,6 +53,7 @@ public class UserDaoImpl implements UserDao {
 		} catch (SQLException e) {
 			e.printStackTrace();
 		}
+		
 		user.setReimbursements(reDao.getReimbursementByUser(user));
 		
 		return user;
@@ -86,12 +87,16 @@ public class UserDaoImpl implements UserDao {
 
 	@Override
 	public void createUser(User user) {
+		
+		System.out.println("in createUser");
+		
 		String sql = "insert into Users (username, password, firstname, lastname, "
 				+ "supervisor, departmentHead, role, availableReimbursement) "
 				+ "values (?, ?, ?, ?, ?, ?, ?, ?)";
 		PreparedStatement stmt;
 		
 		try {
+			System.out.println("in try");
 			stmt = conn.prepareStatement(sql);
 			stmt.setString(1, user.getUsername());
 			stmt.setString(2, user.getPassword());
@@ -101,6 +106,7 @@ public class UserDaoImpl implements UserDao {
 			stmt.setInt(6, user.getDepartmentHead());
 			stmt.setString(7, user.getRole());
 			stmt.setDouble(8, user.getAvailableReimbursement());
+			stmt.executeUpdate();
 		} catch (SQLException e) {
 			e.printStackTrace();
 		}
@@ -154,6 +160,7 @@ public class UserDaoImpl implements UserDao {
 			stmt.setString(7, user.getRole());
 			stmt.setDouble(8, user.getAvailableReimbursement());
 			stmt.setInt(9, user.getUserID());
+			stmt.executeUpdate();
 		} catch (SQLException e) {
 			e.printStackTrace();
 		}
@@ -171,11 +178,11 @@ public class UserDaoImpl implements UserDao {
 		try {
 			stmt1 = conn.prepareStatement(sql);
 			stmt1.setInt(1, user.getUserID());
-			stmt1.executeQuery();
+			stmt1.executeUpdate();
 			
 			stmt2 = conn.prepareStatement(sql2);
 			stmt2.setInt(1,  user.getUserID());
-			stmt2.executeQuery();
+			stmt2.executeUpdate();
 			
 			} catch (SQLException e) {
 			e.printStackTrace();
