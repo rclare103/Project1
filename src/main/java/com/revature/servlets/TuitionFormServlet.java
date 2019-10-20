@@ -51,6 +51,7 @@ public class TuitionFormServlet extends HttpServlet {
 		LocalTime submissionTime = java.time.LocalTime.now();
 		info("submissionTime: " + submissionTime);
 		String eventType = request.getParameter("eventType");
+		eventType = eventType.replace('_', ' ');
 		info("eventType: " + eventType);
 		LocalDate eventDate = LocalDate.parse(request.getParameter("eventDate"));
 		info("eventDate: + eventDate");
