@@ -7,7 +7,10 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
 import com.revature.pojo.User;
+import com.revature.service.UserService;
 import com.revature.service.UserServiceImpl;
+import com.revature.service.UserServiceImpl2;
+
 import static com.revature.util.LoggerUtil.*;
 
 /**
@@ -16,7 +19,7 @@ import static com.revature.util.LoggerUtil.*;
 public class LoginServlet extends HttpServlet {
 	private static final long serialVersionUID = 1L;
     
-	private static UserServiceImpl userService = new UserServiceImpl();
+	private static UserServiceImpl2 userService = new UserServiceImpl2();
 	private User user = new User();
 	
     /**

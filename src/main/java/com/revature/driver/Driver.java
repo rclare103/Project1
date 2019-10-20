@@ -16,10 +16,13 @@ public class Driver {
 		 * 1000.0); userDao.createUser(user);
 		 */
 		
+		
+		
 		String username = "testUser";
 		String password = "testPassword";
 		User user = userService.loginUser(username, password);
 		System.out.println(user.getFirstName());
+		
 		
 	}
 }
