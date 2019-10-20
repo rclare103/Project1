@@ -29,4 +29,14 @@
     <servlet-name>HomeServlet</servlet-name>
     <url-pattern>/home</url-pattern>
   </servlet-mapping>
+  <servlet>
+    <description></description>
+    <display-name>TuitionFormServlet</display-name>
+    <servlet-name>TuitionFormServlet</servlet-name>
+    <servlet-class>com.revature.servlets.TuitionFormServlet</servlet-class>
+  </servlet>
+  <servlet-mapping>
+    <servlet-name>TuitionFormServlet</servlet-name>
+    <url-pattern>/tuitionform</url-pattern>
+  </servlet-mapping>
 </web-app>

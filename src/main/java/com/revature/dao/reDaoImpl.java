@@ -73,29 +73,28 @@ public class reDaoImpl implements reDao {
 
 	@Override
 	public void createReimbursement(Reimbursement re) {
-		String sql = "insert into Reimbursements (rID, userID, eventType, eventDate, eventTime, location, "
+		String sql = "insert into Reimbursements ( userID, eventType, eventDate, eventTime, location, "
 				+ "description, cost, gradingFormat, justification, submissionDate, "
 				+ "submissionTime, dsStatus, dhStatus, bcStatus) "
-				+ "values (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?)";
+				+ "values (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?)";
 		PreparedStatement stmt;
 		
 		try {
 			stmt = conn.prepareStatement(sql);
-			stmt.setInt(1, re.getrID());
-			stmt.setInt(2, re.getUserID());
-			stmt.setString(3,  re.getEventType());
-			stmt.setDate(4, Date.valueOf(re.getEventDate()));
-			stmt.setTime(5, Time.valueOf(re.getEventTime()));
-			stmt.setString(6,  re.getLocation());
-			stmt.setString(7, re.getDescription());
-			stmt.setDouble(8, re.getCost());
-			stmt.setString(9, re.getGradingFormat());
-			stmt.setString(10, re.getJustification());
-			stmt.setDate(11, Date.valueOf(re.getSubmissionDate()));
-			stmt.setTime(12, Time.valueOf(re.getSubmissionTime()));
-			stmt.setString(13, re.getDsStatus());
-			stmt.setString(14, re.getDhStatus());
-			stmt.setString(15, re.getBcStatus());
+			stmt.setInt(1, re.getUserID());
+			stmt.setString(2,  re.getEventType());
+			stmt.setDate(3, Date.valueOf(re.getEventDate()));
+			stmt.setTime(4, Time.valueOf(re.getEventTime()));
+			stmt.setString(5,  re.getLocation());
+			stmt.setString(6, re.getDescription());
+			stmt.setDouble(7, re.getCost());
+			stmt.setString(8, re.getGradingFormat());
+			stmt.setString(9, re.getJustification());
+			stmt.setDate(10, Date.valueOf(re.getSubmissionDate()));
+			stmt.setTime(11, Time.valueOf(re.getSubmissionTime()));
+			stmt.setString(12, re.getDsStatus());
+			stmt.setString(13, re.getDhStatus());
+			stmt.setString(14, re.getBcStatus());
 			stmt.executeUpdate();
 		} catch (SQLException e) {
 			e.printStackTrace();

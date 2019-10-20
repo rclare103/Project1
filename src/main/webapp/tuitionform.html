@@ -8,7 +8,8 @@
 
 <h2>Employee Tuition Reimbursement Form</h2>
 
-<form action="/action_page.php">
+<form action="tuitionform", method = "POST">
+
 <div align="left">
   <label for="firstname">First Name:</label>
   <br>
@@ -18,10 +19,7 @@
   <br>
   <input type="text" name="lastname" value="">
   <br>
-  <label for="employeeID">Employee ID:</label>
-  <br>
-  <input type="text" name="employeeID" value="">
-  <br>
+  
   <label for="location">Location:</label>
   <br>
   <input type="text" name="location" value="">
@@ -30,39 +28,50 @@
 </div>
 
 <div align="left">
+        <p>Event Date: <br> 
+          <input type="date" name="eventDate"></p>   
+</div>
+
+<div align="left">
+        <p>Event Time: <br> 
+          <input type="time" name="eventTime"></p>   
+</div>
+
+<div align="left">
     Event Cost:<br>
-    <input type="text" name="eventCost">
+    <input type="text" name="cost">
     <br>
   </div>
 <div align="left">
   <label align="left">Current available reimbursement amount: 1000</label>
 </div>
-
-<div align="left">
-        <p>Date Submitted: <br> 
-          <input type="date" name="dateSubmitted"></p>   
-      </div>
-
-<div align="left">
-  <p>Date Completed: <br> 
-    <input type="date" name="dateCompleted"></p>   
+<br>
+		
 </div>
   <div class="form-group" align="left">
-    <label for="eventDescription">
+    <label for="description">
         Event Description:</label>
         <br>
-    <textarea class="form-control" type="textarea" name="eventDescription"
+    <textarea class="form-control" type="textarea" name="description"
+    id="eventDesc"
+    maxlength="6000" rows="7" cols="50"></textarea>
+</div>
+ <div class="form-group" align="left">
+    <label for="justification">
+        Enter Justification:</label>
+        <br>
+    <textarea class="form-control" type="textarea" name="justification"
     id="eventDesc"
     maxlength="6000" rows="7" cols="50"></textarea>
 </div>
 <div align="left">
    <p>Type of event for reimbursement</p>
-  <input type="radio" name="businessFields" value="univCourse" > University Course <br>
-  <input type="radio" name="businessFields" value="seminars"> Seminar <br>
-  <input type="radio" name="businessFields" value="certifcation_prep"> Certification Preparation <br>
-  <input type="radio" name="businessFields" value="certification" > Certification <br>
-  <input type="radio" name="businessFields" value="technical_training"> Technical Training <br>
-  <input type="radio" name="businessFields" value="other"> Other <br>
+  <input type="radio" name="eventType" value="university course" > University Course <br>
+  <input type="radio" name="eventType" value="seminar"> Seminar <br>
+  <input type="radio" name="eventType" value="certifcation_preparation_course"> Certification Preparation <br>
+  <input type="radio" name="eventType" value="certification" > Certification <br>
+  <input type="radio" name="eventType" value="technical_training"> Technical Training <br>
+  <input type="radio" name="eventType" value="other"> Other <br>
 </div>
 <br>
 <div align="left">

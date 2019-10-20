@@ -19,7 +19,7 @@ public class LoginServlet extends HttpServlet {
 	private static final long serialVersionUID = 1L;
     
 	private static UserServiceImpl userService = new UserServiceImpl();
-	private User user = new User();
+	
 	
     /**
      * @see HttpServlet#HttpServlet()
@@ -34,7 +34,7 @@ public class LoginServlet extends HttpServlet {
 	 */
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		// TODO Auto-generated method stub
-		response.getWriter().write("doGet");
+		
 	}
 
 	/**
@@ -45,13 +45,13 @@ public class LoginServlet extends HttpServlet {
 		String password = request.getParameter("password");
 		info(username + ".");
 		info(password + ".");
-		user = userService.loginUser(username, password);
+		User user = userService.loginUser(username, password);
 		info(user.getFirstName() + ".");
 		if (user != null) {
 			 
 			 request.getSession().setAttribute("user", user);
 			 if (user.getUsername().equals("testUser")) {
-				 response.sendRedirect("home");
+				 response.sendRedirect("tuitionform.html");
 			 } else {
 				 //response.sendRedirect("emp"); 
 			 }
