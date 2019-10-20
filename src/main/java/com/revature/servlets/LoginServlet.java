@@ -9,7 +9,6 @@ import javax.servlet.http.HttpServletResponse;
 import com.revature.pojo.User;
 import com.revature.service.UserService;
 import com.revature.service.UserServiceImpl;
-import com.revature.service.UserServiceImpl2;
 
 import static com.revature.util.LoggerUtil.*;
 
@@ -19,7 +18,7 @@ import static com.revature.util.LoggerUtil.*;
 public class LoginServlet extends HttpServlet {
 	private static final long serialVersionUID = 1L;
     
-	private static UserServiceImpl2 userService = new UserServiceImpl2();
+	private static UserServiceImpl userService = new UserServiceImpl();
 	private User user = new User();
 	
     /**
@@ -49,8 +48,8 @@ public class LoginServlet extends HttpServlet {
 		user = userService.loginUser(username, password);
 		info(user.getFirstName() + ".");
 		if (user != null) {
-			 System.out.println("in if statement");
-			 //request.getSession().setAttribute("user", user);
+			 
+			 request.getSession().setAttribute("user", user);
 			 if (user.getUsername().equals("testUser")) {
 				 response.sendRedirect("home");
 			 } else {
