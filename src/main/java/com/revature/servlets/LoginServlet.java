@@ -43,14 +43,15 @@ public class LoginServlet extends HttpServlet {
 	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		String username = request.getParameter("username");
 		String password = request.getParameter("password");
-		info(username + ".");
-		info(password + ".");
+		debug(username + ".");
+		debug(password + ".");
 		User user = userService.loginUser(username, password);
-		info(user.getFirstName() + ".");
+		
 		if (user != null) {
-			 
+			 debug("Successfully got: " + user.getFirstName());
 			 request.getSession().setAttribute("user", user);
 			 if (user.getUsername().equals("testUser")) {
+				 debug("verifying correct user");
 				 response.sendRedirect("tuitionform.html");
 			 } else {
 				 //response.sendRedirect("emp"); 

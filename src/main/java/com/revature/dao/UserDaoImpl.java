@@ -29,6 +29,9 @@ public class UserDaoImpl implements UserDao {
 	 * 9. availableReimbursement numeric not null
 	 */
 	
+	public void setConn(Connection conn) {
+		this.conn = conn;
+	}
 	
 	@Override
 	public User getUser(String username) {

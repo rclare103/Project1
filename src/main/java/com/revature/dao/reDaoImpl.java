@@ -37,6 +37,10 @@ public class reDaoImpl implements reDao {
 	
 	private static Connection conn = ConnectionFactory.getConnection();
 	
+	public void setConn(Connection conn) {
+		this.conn = conn;
+	}
+	
 	@Override
 	public Reimbursement getReimbursement(int rID) {
 		String sql = "select * from Reimbursements where rID = ?";
