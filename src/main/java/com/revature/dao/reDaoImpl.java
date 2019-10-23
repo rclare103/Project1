@@ -67,6 +67,8 @@ public class reDaoImpl implements reDao {
 				re.setDsStatus(rs.getString(13));
 				re.setDhStatus(rs.getString(14));
 				re.setBcStatus(rs.getString(15));
+				re.setMessage(rs.getString(16));
+				re.setFinalGrade(rs.getString(17));
 			}
 		} catch (SQLException e) {
 			// TODO Auto-generated catch block
@@ -79,8 +81,8 @@ public class reDaoImpl implements reDao {
 	public void createReimbursement(Reimbursement re) {
 		String sql = "insert into Reimbursements ( userID, eventType, eventDate, eventTime, location, "
 				+ "description, cost, gradingFormat, justification, submissionDate, "
-				+ "submissionTime, dsStatus, dhStatus, bcStatus) "
-				+ "values (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?)";
+				+ "submissionTime, dsStatus, dhStatus, bcStatus, message, finalGrade) "
+				+ "values (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?)";
 		PreparedStatement stmt;
 		
 		try {
@@ -99,6 +101,8 @@ public class reDaoImpl implements reDao {
 			stmt.setString(12, re.getDsStatus());
 			stmt.setString(13, re.getDhStatus());
 			stmt.setString(14, re.getBcStatus());
+			stmt.setString(15,  re.getMessage());
+			stmt.setString(16, re.getFinalGrade());
 			stmt.executeUpdate();
 		} catch (SQLException e) {
 			e.printStackTrace();
@@ -133,6 +137,8 @@ public class reDaoImpl implements reDao {
 				re.setDsStatus(rs.getString(13));
 				re.setDhStatus(rs.getString(14));
 				re.setBcStatus(rs.getString(15));
+				re.setMessage(rs.getString(16));
+				re.setFinalGrade(rs.getString(17));
 			}
 		} catch (SQLException e) {
 			e.printStackTrace();
@@ -147,7 +153,7 @@ public class reDaoImpl implements reDao {
 		String sql = "update Reimbursements " 
 				+ "set userID = ?, eventType = ?, eventDate = ?, eventTime = ?, location = ?, description = ?, "
 				+ "cost = ?, grading Format = ?, justification = ?, submissionDate = ?, "
-				+ "submissionTime = ?, dsStatus = ?, dhStatus = ?, bcStatus = ? "
+				+ "submissionTime = ?, dsStatus = ?, dhStatus = ?, bcStatus = ?, message = ?, finalGrade = ? "
 				+ "where rID = ?";
 		PreparedStatement stmt;
 		
@@ -168,6 +174,8 @@ public class reDaoImpl implements reDao {
 			stmt.setString(13, re.getDhStatus());
 			stmt.setString(14, re.getBcStatus());
 			stmt.setInt(15, re.getrID());
+			stmt.setString(16,  re.getMessage());
+			stmt.setString(17,  re.getFinalGrade());
 			stmt.executeUpdate();
 		} catch (SQLException e) {
 			e.printStackTrace();
@@ -217,6 +225,8 @@ public class reDaoImpl implements reDao {
 				re.setDsStatus(rs.getString(13));
 				re.setDhStatus(rs.getString(14));
 				re.setBcStatus(rs.getString(15));
+				re.setMessage(rs.getString(16));
+				re.setFinalGrade(rs.getString(17));
 				reList.add(re);
 			}
 		} catch (SQLException e) {

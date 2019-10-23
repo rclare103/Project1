@@ -5,11 +5,11 @@ import java.util.Map;
 
 public class EventTypes {
 	public static Map<String, Double> reEvent = new HashMap<String, Double>(){{
-	put("university course", 0.8);
+	put("university_course", 0.8);
 	put("seminar", 0.6);
-	put("certification preparation class", 0.75);
+	put("certification_preparation_class", 0.75);
 	put("certification", 1.0);
-	put("technical training", 0.9);
+	put("technical_training", 0.9);
 	put("other", 0.3);
 	}};
 

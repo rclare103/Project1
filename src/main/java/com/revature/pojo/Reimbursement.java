@@ -19,6 +19,8 @@ public class Reimbursement {
 	private String dsStatus;
 	private String dhStatus;
 	private String bcStatus;
+	private String message;
+	private String finalGrade;
 	
 	public int getrID() {
 		return rID;
@@ -112,6 +114,20 @@ public class Reimbursement {
 	public void setBcStatus(String bcStatus) {
 		this.bcStatus = bcStatus;
 	}
+	
+	
+	public String getMessage() {
+		return message;
+	}
+	public void setMessage(String message) {
+		this.message = message;
+	}
+	public String getFinalGrade() {
+		return finalGrade;
+	}
+	public void setFinalGrade(String finalGrade) {
+		this.finalGrade = finalGrade;
+	}
 	@Override
 	public int hashCode() {
 		final int prime = 31;
@@ -126,9 +142,11 @@ public class Reimbursement {
 		result = prime * result + ((eventDate == null) ? 0 : eventDate.hashCode());
 		result = prime * result + ((eventTime == null) ? 0 : eventTime.hashCode());
 		result = prime * result + ((eventType == null) ? 0 : eventType.hashCode());
+		result = prime * result + ((finalGrade == null) ? 0 : finalGrade.hashCode());
 		result = prime * result + ((gradingFormat == null) ? 0 : gradingFormat.hashCode());
 		result = prime * result + ((justification == null) ? 0 : justification.hashCode());
 		result = prime * result + ((location == null) ? 0 : location.hashCode());
+		result = prime * result + ((message == null) ? 0 : message.hashCode());
 		result = prime * result + rID;
 		result = prime * result + ((submissionDate == null) ? 0 : submissionDate.hashCode());
 		result = prime * result + ((submissionTime == null) ? 0 : submissionTime.hashCode());
@@ -181,6 +199,11 @@ public class Reimbursement {
 				return false;
 		} else if (!eventType.equals(other.eventType))
 			return false;
+		if (finalGrade == null) {
+			if (other.finalGrade != null)
+				return false;
+		} else if (!finalGrade.equals(other.finalGrade))
+			return false;
 		if (gradingFormat == null) {
 			if (other.gradingFormat != null)
 				return false;
@@ -195,6 +218,11 @@ public class Reimbursement {
 			if (other.location != null)
 				return false;
 		} else if (!location.equals(other.location))
+			return false;
+		if (message == null) {
+			if (other.message != null)
+				return false;
+		} else if (!message.equals(other.message))
 			return false;
 		if (rID != other.rID)
 			return false;
@@ -218,11 +246,13 @@ public class Reimbursement {
 				+ eventDate + ", eventTime=" + eventTime + ", location=" + location + ", description=" + description
 				+ ", cost=" + cost + ", gradingFormat=" + gradingFormat + ", justification=" + justification
 				+ ", submissionDate=" + submissionDate + ", submissionTime=" + submissionTime + ", dsStatus=" + dsStatus
-				+ ", dhStatus=" + dhStatus + ", bcStatus=" + bcStatus + "]";
+				+ ", dhStatus=" + dhStatus + ", bcStatus=" + bcStatus + ", message=" + message + ", finalGrade="
+				+ finalGrade + "]";
 	}
 	public Reimbursement(int rID, int userID, String eventType, LocalDate eventDate, LocalTime eventTime,
 			String location, String description, double cost, String gradingFormat, String justification,
-			LocalDate submissionDate, LocalTime submissionTime, String dsStatus, String dhStatus, String bcStatus) {
+			LocalDate submissionDate, LocalTime submissionTime, String dsStatus, String dhStatus, String bcStatus,
+			String message, String finalGrade) {
 		super();
 		this.rID = rID;
 		this.userID = userID;
@@ -239,6 +269,8 @@ public class Reimbursement {
 		this.dsStatus = dsStatus;
 		this.dhStatus = dhStatus;
 		this.bcStatus = bcStatus;
+		this.message = message;
+		this.finalGrade = finalGrade;
 	}
 	public Reimbursement() {
 		super();
