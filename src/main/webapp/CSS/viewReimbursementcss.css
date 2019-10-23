@@ -1,0 +1,30 @@
+body {
+    text-align: center;
+    background: rgb(31, 109, 255);
+    color: white;
+    font: garamond;
+    font-size: 20px;
+}
+
+th,
+td,
+p,
+input {
+    font: 14px Verdana;
+}
+
+table,
+th,
+td {
+    border: solid 1px #DDD;
+    border-collapse: collapse;
+    padding: 2px 3px;
+    text-align: center;
+    margin-left: auto;
+    margin-right: auto;
+    margin-top: 25%;
+}
+
+th {
+    font-weight: bold;
+}

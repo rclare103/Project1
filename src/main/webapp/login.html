@@ -35,5 +35,26 @@
 		<!-- content -->
 	</div>
 	<!-- container -->
+	<input type="text" id="test" value=""/>
+	<label id="lbltp">test</label>
+	<button onclick="onReady()">  Click me!</button>
+
 </body>
+
+<script>
+ function onReady(){
+
+	var xhttp;
+	xhttp = new XMLHttpRequest();
+	xhttp.onreadystatechange = function(){
+		if(this.readyState == 4 && this.status == 200){
+			document.getElementById("lbltp").innerHTML = xhttp.responseText ;
+		} else {
+			document.getElementById("lbltp").innerHTML = "failed to retrieve"
+		}
+	};
+	xhttp.open("GET", "login", true);
+	xhttp.send();
+}
+</script>
 </html>
