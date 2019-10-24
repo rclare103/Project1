@@ -19,9 +19,8 @@
     <servlet-name>LoginServlet</servlet-name>
     <url-pattern>/login</url-pattern>
   </servlet-mapping>
-  
   <servlet>
-      <display-name>ViewSubmissionServlet</display-name>
+    <display-name>ViewSubmissionServlet</display-name>
     <servlet-name>ViewSubmissionServlet</servlet-name>
     <servlet-class>com.revature.servlets.ViewSubmissionServlet</servlet-class>
   </servlet>
@@ -29,9 +28,6 @@
     <servlet-name>ViewSubmissionServlet</servlet-name>
     <url-pattern>/ViewReimbursements.html</url-pattern>
   </servlet-mapping>
-  
-  
-  
   <servlet>
     <description></description>
     <display-name>HomeServlet</display-name>
@@ -51,5 +47,15 @@
   <servlet-mapping>
     <servlet-name>TuitionFormServlet</servlet-name>
     <url-pattern>/tuitionform</url-pattern>
+  </servlet-mapping>
+  <servlet>
+    <description></description>
+    <display-name>EmpHomeServlet</display-name>
+    <servlet-name>EmpHomeServlet</servlet-name>
+    <servlet-class>com.revature.servlets.EmpHomeServlet</servlet-class>
+  </servlet>
+  <servlet-mapping>
+    <servlet-name>EmpHomeServlet</servlet-name>
+    <url-pattern>/emphome</url-pattern>
   </servlet-mapping>
 </web-app>

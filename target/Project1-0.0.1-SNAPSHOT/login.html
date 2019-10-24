@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<!--[if lt IE 7 ]> <html lang="en" class="ie6 ielt8"> <![endif]-->
+<!--[if IE 7 ]>    <html lang="en" class="ie7 ielt8"> <![endif]-->
+<!--[if IE 8 ]>    <html lang="en" class="ie8"> <![endif]-->
+<!--[if (gte IE 9)|!(IE)]><!-->
+<html lang="en">
+<!--<![endif]-->
+<head>
+<meta charset="utf-8">
+<title>Login</title>
+<link rel="stylesheet" type="text/css" href="CSS/logincss.css" />
+</head>
+<body>
+	<div class="container">
+		<section id="content">
+			<form action="login" method="POST">
+				<h1>Login Form</h1>
+				<div>
+					<input type="text" placeholder="Username" required=""
+						name="username" />
+				</div>
+				<div>
+					<input type="password" placeholder="Password" required=""
+						name="password" />
+				</div>
+				<div>
+					<input type="submit" value="Send Request" /> <a href="#">Lost
+						your password?</a>
+
+				</div>
+			</form>
+			<!-- form -->
+
+		</section>
+		<!-- content -->
+	</div>
+	<!-- container -->
+	<input type="text" id="test" value=""/>
+	<label id="lbltp">test</label>
+	<button onclick="onReady()">  Click me!</button>
+
+</body>
+
+<script>
+ function onReady(){
+
+	var xhttp;
+	xhttp = new XMLHttpRequest();
+	xhttp.onreadystatechange = function(){
+		if(this.readyState == 4 && this.status == 200){
+			document.getElementById("lbltp").innerHTML = xhttp.responseText ;
+		} else {
+			document.getElementById("lbltp").innerHTML = "failed to retrieve"
+		}
+	};
+	xhttp.open("GET", "login", true);
+	xhttp.send();
+}
+</script>
+</html>

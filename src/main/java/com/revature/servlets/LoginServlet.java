@@ -80,7 +80,7 @@ public class LoginServlet extends HttpServlet {
 			 request.getSession().setAttribute("user", user);
 			 if (user.getUsername().equals(dbUsername)) {
 				 
-				 response.sendRedirect("tuitionform.html");
+				 response.sendRedirect("emphome.html");
 			 } else {
 				 //response.sendRedirect("emp"); 
 			 }

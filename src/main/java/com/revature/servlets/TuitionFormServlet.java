@@ -43,7 +43,7 @@ public class TuitionFormServlet extends HttpServlet {
 	 * @see HttpServlet#doPost(HttpServletRequest request, HttpServletResponse response)
 	 */
 	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-		User user = (User) request.getSession().getAttribute("user");
+		User user = (User) request.getSession(false).getAttribute("user");
 		int userID = user.getUserID();
 		debug("userID: " + userID);
 		LocalDate submissionDate = java.time.LocalDate.now();
@@ -53,7 +53,7 @@ public class TuitionFormServlet extends HttpServlet {
 		String eventType = request.getParameter("eventType");
 		debug("eventType: " + eventType);
 		LocalDate eventDate = LocalDate.parse(request.getParameter("eventDate"));
-		debug("eventDate: + eventDate");
+		debug("eventDate:" + eventDate);
 		LocalTime eventTime = LocalTime.parse(request.getParameter("eventTime"));
 		debug("eventTime: " + eventTime);
 		String location = request.getParameter("location");

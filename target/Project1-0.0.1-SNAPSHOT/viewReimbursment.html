@@ -1,0 +1,97 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <title>
+        View Reimbursement Submission
+    </title>
+    <link rel="stylesheet" type="text/css" href="C:\Users\clare\OneDrive\Desktop\Project1-feature (2)\Project1-feature\CSS\viewReimbursementcss.css">
+
+</head>
+
+<body>
+    <table id="empTable">
+        <tr>
+            <th>User ID</th>
+            <th>Reimbursement ID </th>
+            <th>Username </th>
+            <th>First Name</th>
+            <th>Last Name</th>
+            <th>Status</th>
+        </tr>
+        <tr>
+            <td>01</td>
+            <td>01</td>
+            <td>tilteddd</td>
+            <td>League of Legends</td>
+            <td>Ross</td>
+            <td>Clare</td>
+            <td>Pending</td>
+            
+        </tr>
+        <tr>
+            <td>02</td>
+            <td>Bravo</td>
+            <td>testUser</td>
+            <td>Ross</td>
+            <td>Clare</td>
+            <td>Pending</td>
+        </tr>
+    </table>
+    
+    	<div>
+			<input type="text" placeholder="Username" required="" id="username" />
+		</div>
+    
+    
+
+    <p><input type="button" id="bt" value="Show Tables" onclick="addRow(reimb)" /></p>
+    <p id="info"></p>
+</body>
+
+
+<script>
+
+function addRow(viewReimbursement)
+        {
+                 if (!document.getElementsByTagName) return;
+                 tabBody=document.getElementsByTagName("tbody").item(0);
+                 row=document.createElement("tr");
+                 cell1 = document.createElement("td");
+                 cell2 = document.createElement("td");
+                 cell3 = document.createElement("td");
+                 cell4 = document.createElement("td");
+
+                 textnode1=document.createTextNode(viewReimbursement.user_id);
+                 textnode2=document.createTextNode(viewReimbursement.username);
+                 textnode3=document.createTextNode(viewReimbursement.firstname);
+                 textnode4=document.createTextNode(viewReimbursement.lastname);
+
+                 cell1.appendChild(textnode1);
+                 cell2.appendChild(textnode2);
+                 cell3.appendChild(textnode3);
+                 cell4.appendChild(textnode4);
+
+                 row.appendChild(cell1);
+                 row.appendChild(cell2);
+                 row.appendChild(cell3);
+                 row.appendChild(cell4);
+
+                 tabBody.appendChild(row);
+        }
+        
+        
+        
+        class viewReimbursement {
+            constructor(user_id, username, firstname, lastname) {
+                this.user_id = user_id;
+                this.username = username;
+                this.firstname = firstname;
+                this.lastname = lastname;
+            }
+        }
+        
+        reimb = new viewReimbursement(1, `tilteddd`, `ross`, `clare`);
+</script>
+
+</html>
