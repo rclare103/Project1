@@ -6,7 +6,11 @@ import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
+import com.fasterxml.jackson.databind.ObjectMapper;
+import com.revature.pojo.Message;
 import com.revature.pojo.User;
+import com.revature.service.MessageService;
+import com.revature.service.MessageServiceImpl;
 import com.revature.service.ReimbursementService;
 import com.revature.service.ReimbursementServiceImpl;
 
@@ -19,6 +23,7 @@ import static com.revature.util.LoggerUtil.*;
 public class MessageServlet extends HttpServlet {
 	private static final long serialVersionUID = 1L;
 	private static ReimbursementService reService = new ReimbursementServiceImpl();
+	private static MessageService messageService = new MessageServiceImpl();
        
     /**
      * @see HttpServlet#HttpServlet()
@@ -38,7 +43,7 @@ public class MessageServlet extends HttpServlet {
 		String message = request.getParameter("message");
 		String role = user.getRole();
 		
-		reService.addMessage(message, role, rID);
+		messageService.addMessage(message, role, rID);
 		
 		
 		
@@ -48,8 +53,13 @@ public class MessageServlet extends HttpServlet {
 	 * @see HttpServlet#doPost(HttpServletRequest request, HttpServletResponse response)
 	 */
 	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-		// TODO Auto-generated method stub
-		doGet(request, response);
+		User user = (User) request.getSession().getAttribute("user");
+		int rID = Integer.parseInt(request.getParameter("rIDmess"));
+		ObjectMapper om = new ObjectMapper();
+		Message message = messageService.findMessages(rID);
+		
+		response.setContentType("text/plain");
+		response.getWriter().write(om.writeValueAsString(message));
 	}
 
 }

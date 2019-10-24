@@ -49,7 +49,7 @@ public class UserDaoTest {
 	@AfterClass
 	public static void tearDownAfterClass() throws Exception {
 		
-		ConnectionFactory.getConnection().createStatement().executeUpdate("truncate table Users");
+		//ConnectionFactory.getConnection().createStatement().executeUpdate("truncate table Users");
 
 
 	}
@@ -57,7 +57,7 @@ public class UserDaoTest {
 	@Before
 	public void setUp() throws Exception {
 		
-		when(conn.createStatement()).thenReturn(stmt);
+		//when(conn.createStatement()).thenReturn(stmt);
 		
 		user = new User();
 		
@@ -71,13 +71,13 @@ public class UserDaoTest {
 	@Test
 	public void testCreateUser() {
 		
-		user.setUsername("Test");
-		user.setPassword("Test");
-		user.setFirstName("Test");
-		user.setLastName("Test");
-		user.setSupervisor(0);
-		user.setDepartmentHead(0);
-		user.setRole("Test");
+		user.setUsername("Emu3");
+		user.setPassword("Emu3");
+		user.setFirstName("Emu3");
+		user.setLastName("Emu3");
+		user.setSupervisor(3);
+		user.setDepartmentHead(2);
+		user.setRole("emp");
 		user.setAvailableReimbursement(1000.0);
 		
 		userDao.createUser(user);

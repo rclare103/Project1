@@ -81,6 +81,24 @@ function showHideApprove(){
     }
 }
 
+function showHideMessage(){
+    let x = document.getElementById("message");
+    if (x.style.display === "none"){
+        x.style.display = "block";
+    } else {
+        x.style.display = "none";
+    }
+}
+
+function viewMessages(){
+    let x = document.getElementById("viewMessage");
+    if (x.style.display === "none"){
+        x.style.display = "block";
+    } else {
+        x.style.display = "none";
+    }
+}
+
 window.onload = function(){
     this.getReimbursements();
 }

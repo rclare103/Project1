@@ -40,7 +40,6 @@
     <form id="message" style="display: block" method="GET" action="message">
         <label for="rID">Enter rID: </label>
         <input type="text" name="rID" value="">
-        </div>
         <div class="form-group" align="left">
             <label for="Message">
                 Event Message:</label>
@@ -51,6 +50,12 @@
         <input type = "submit" value = "Send Message">
     </form>
 
+    <button onclick="viewMessages()">Approve Reimbursement</button>
+    <form id = "viewMessage" style = "display:block" method = "POST" action = "message">
+        <label for = "rIDmess">Enter rID: </label>
+        <input type = "text" name = "rIDmess" value = "">
+        <input type = "submit" value = "view Message">
+    </form>
     <!--
     <footer>
         <a href="tuitionform.html">Submit new reimbursement request</a>
