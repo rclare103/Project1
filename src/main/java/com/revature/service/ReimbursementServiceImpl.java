@@ -36,9 +36,8 @@ public class ReimbursementServiceImpl implements ReimbursementService {
 	}
 
 	@Override
-	public List<Reimbursement> findReimbursementByUser(User user) {
-		// TODO Auto-generated method stub
-		return null;
+	public List<Reimbursement> findReimbursementByUser(int userID) {
+		return reDao.getReimbursementByUser(userID);
 	}
 
 }

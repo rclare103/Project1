@@ -13,6 +13,7 @@ import com.fasterxml.jackson.datatype.jsr310.JavaTimeModule;
 import com.revature.pojo.Reimbursement;
 import com.revature.pojo.User;
 import com.revature.service.ReimbursementServiceImpl;
+import static com.revature.util.LoggerUtil.*;
 
 /**
  * Servlet implementation class EmpHome
@@ -36,12 +37,12 @@ public class EmpHomeServlet extends HttpServlet {
 	protected void doGet(HttpServletRequest request, HttpServletResponse response)
 			throws ServletException, IOException {
 		User user = (User) request.getSession().getAttribute("user");
+		info("Succesfully entered doGet userID = " + user.getUserID());
 		ObjectMapper om = new ObjectMapper();
 		om.registerModule(new JavaTimeModule());
-
-		
-		List<Reimbursement> reList = reService.findReimbursementByUser(user);
-		
+				
+		List<Reimbursement> reList = reService.findReimbursementByUser(user.getUserID());
+		info("List: " + reList.toString());
 		response.setContentType("text/plain");
 		response.getWriter().write(om.writeValueAsString(reList));
 

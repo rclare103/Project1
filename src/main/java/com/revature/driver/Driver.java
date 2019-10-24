@@ -1,13 +1,20 @@
 package com.revature.driver;
 
+import java.util.List;
+
 import com.revature.dao.UserDaoImpl;
+import com.revature.pojo.Reimbursement;
 import com.revature.pojo.User;
+import com.revature.service.ReimbursementService;
+import com.revature.service.ReimbursementServiceImpl;
 import com.revature.service.UserServiceImpl;
+
 
 public class Driver {
 	
 	private static UserDaoImpl userDao = new UserDaoImpl();
 	private static UserServiceImpl userService = new UserServiceImpl();
+	private static ReimbursementService reService = new ReimbursementServiceImpl();
 	
 	public static void main(String[] args) {
 		
@@ -23,6 +30,7 @@ public class Driver {
 		User user = userService.loginUser(username, password);
 		System.out.println(user.getFirstName());
 		
-		
+		List<Reimbursement> reList = reService.findReimbursementByUser(user.getUserID());
+		System.out.println(reList.get(0));
 	}
 }

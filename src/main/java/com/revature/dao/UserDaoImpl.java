@@ -57,7 +57,7 @@ public class UserDaoImpl implements UserDao {
 			e.printStackTrace();
 		}
 		
-		user.setReimbursements(reDao.getReimbursementByUser(user));
+		user.setReimbursements(reDao.getReimbursementByUser(user.getUserID()));
 		
 		return user;
 	}
@@ -97,7 +97,7 @@ public class UserDaoImpl implements UserDao {
 				+ "supervisor, departmentHead, role, availableReimbursement) "
 				+ "values (?, ?, ?, ?, ?, ?, ?, ?)";
 		PreparedStatement stmt;
-		
+		user.setAvailableReimbursement(reCalc.getAvailableReimbursement(user));
 		try {
 			System.out.println("in try");
 			stmt = conn.prepareStatement(sql);

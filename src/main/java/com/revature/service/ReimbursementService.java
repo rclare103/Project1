@@ -17,5 +17,5 @@ public interface ReimbursementService {
 	
 	public void updateReimbursement(Reimbursement re);
 	
-	public List<Reimbursement> findReimbursementByUser(User user);
+	public List<Reimbursement> findReimbursementByUser(int userID);
 }

@@ -41,22 +41,9 @@ public class LoginServlet extends HttpServlet {
 	 */
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		// TODO Auto-generated method stub
-		response.setContentType("text/html");
-		PrintWriter out = response.getWriter();
-		out.println("newvalue");
+		User user =(User) request.getSession().getAttribute("user");
+		response.getWriter().write(user.getAvailableReimbursement() + "");
 		
-		ObjectMapper om = new ObjectMapper();
-
-		String name = request.getPathInfo();
-
-		if (name != null && !"".equals(name.substring(1))) {
-			response.getWriter().write(om.writeValueAsString(userService.getUserByUsername(name.substring(1))));
-		} else {
-
-		List<User> userList = userService.getAllUsers();
-
-			response.getWriter().write(om.writeValueAsString(userList));
-		}
 	}
 
 	/**

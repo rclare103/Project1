@@ -198,8 +198,8 @@ public class reDaoImpl implements reDao {
 	}
 
 	@Override
-	public List<Reimbursement> getReimbursementByUser(User user) {
-		int userID = user.getUserID();
+	public List<Reimbursement> getReimbursementByUser(int userID) {
+		//int userID = user.getUserID();
 		String sql = "select * from Reimbursements where userID = ?";
 		List<Reimbursement> reList = new ArrayList<>();
 		PreparedStatement stmt;

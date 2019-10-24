@@ -48,7 +48,7 @@ public class HomeServlet extends HttpServlet {
 			
 		} else {
 
-			List<Reimbursement> reList = reService.findReimbursementByUser(user);
+			List<Reimbursement> reList = reService.findReimbursementByUser(user.getUserID());
 
 			response.getWriter().write(om.writeValueAsString(reList));
 		}

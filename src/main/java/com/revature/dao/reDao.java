@@ -18,7 +18,7 @@ public interface reDao {
 	
 	public void deleteReimbursement(Reimbursement re);
 	
-	public List<Reimbursement> getReimbursementByUser(User user);
+	public List<Reimbursement> getReimbursementByUser(int userID);
 	
 	
 }
