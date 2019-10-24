@@ -78,4 +78,24 @@
     <servlet-name>SupHomeServlet</servlet-name>
     <url-pattern>/suphome</url-pattern>
   </servlet-mapping>
+  <servlet>
+    <description></description>
+    <display-name>MessageServlet</display-name>
+    <servlet-name>MessageServlet</servlet-name>
+    <servlet-class>com.revature.servlets.MessageServlet</servlet-class>
+  </servlet>
+  <servlet-mapping>
+    <servlet-name>MessageServlet</servlet-name>
+    <url-pattern>/message</url-pattern>
+  </servlet-mapping>
+  <servlet>
+    <description></description>
+    <display-name>ApproveReServlet</display-name>
+    <servlet-name>ApproveReServlet</servlet-name>
+    <servlet-class>com.revature.servlets.ApproveReServlet</servlet-class>
+  </servlet>
+  <servlet-mapping>
+    <servlet-name>ApproveReServlet</servlet-name>
+    <url-pattern>/approvere</url-pattern>
+  </servlet-mapping>
 </web-app>

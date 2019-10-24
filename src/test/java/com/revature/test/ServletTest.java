@@ -1,9 +1,14 @@
 package com.revature.test;
 
 import static org.junit.Assert.*;
+import static org.mockito.Mockito.atLeast;
 import static org.mockito.Mockito.mock;
+import static org.mockito.Mockito.verify;
 import static org.mockito.Mockito.when;
 
+import java.io.IOException;
+
+import javax.servlet.ServletException;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
@@ -41,10 +46,19 @@ public class ServletTest {
 	}
 
 	@Test
-	public void test() {
+	public void LoginServletTest() {
 		when(request.getParameter("username")).thenReturn("TestUser");
 		when(request.getParameter("password")).thenReturn("TestPassword");
-		new LoginServlet().doPost(request, response);
+		try {
+			new LoginServlet().service(request, response);
+		} catch (ServletException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		} catch (IOException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+		verify(request, atLeast(1)).getParameter("username");
 	}
 
 }

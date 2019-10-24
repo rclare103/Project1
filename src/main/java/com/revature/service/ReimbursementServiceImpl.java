@@ -50,4 +50,21 @@ public class ReimbursementServiceImpl implements ReimbursementService {
 		return reDao.getReimbursementByDH(userID);
 	}
 
+	@Override
+	public void makeMessage(int rID) {
+		reDao.createMessage(rID);
+	}
+
+	@Override
+	public void addMessage(String message, String role, int rID) {
+		reDao.addMessage(message, role, rID);
+	}
+
+	@Override
+	public void approveReimbursement(int rID, String role) {
+		reDao.approveReimbursement(rID, role);
+		
+	}
+	
+
 }

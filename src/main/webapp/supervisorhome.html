@@ -26,9 +26,31 @@
             </table>
         </h1>
     </div>
-    <form method = "GET" action = "logout">
-        <button type = "submit">Log Out</button>
+    <form method="GET" action="logout">
+        <button type="submit">Log Out</button>
     </form>
+    <button onclick="showHideApprove()">Approve Reimbursement</button>
+    <form id="approval" style="display: block" method="GET" action="approvere">
+        <label for="rID">Enter rID: </label>
+        <input type="text" name="rID" value="">
+        <input type = "submit" value = "Approve Reimbursement">
+    </form>
+
+    <button onclick="showHideMessage()">Approve Reimbursement</button>
+    <form id="message" style="display: block" method="GET" action="message">
+        <label for="rID">Enter rID: </label>
+        <input type="text" name="rID" value="">
+        </div>
+        <div class="form-group" align="left">
+            <label for="Message">
+                Event Message:</label>
+            <br>
+            <textarea class="form-control" type="textarea" name="message" id="messagebox"
+                placeholder="Enter your message:" maxlength="6000" rows="7" cols="50"></textarea>
+        </div>
+        <input type = "submit" value = "Send Message">
+    </form>
+
     <!--
     <footer>
         <a href="tuitionform.html">Submit new reimbursement request</a>

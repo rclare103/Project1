@@ -321,5 +321,71 @@ public class reDaoImpl implements reDao {
 		
 		return reList;
 	}
+	
+	@Override
+	public void createMessage(int rID) {
+		String sql = "insert into Message (rID) values (?)";
+		PreparedStatement stmt;
+		
+		try {
+			stmt = conn.prepareStatement(sql);
+			stmt.setInt(1, rID);
+			stmt.executeUpdate();
+		} catch (SQLException e) {
+			e.printStackTrace();
+		}
+		
+	}
+	
+	@Override
+	public void addMessage(String message, String role, int rID) {
+		String sql = "update Messages set ? = ? where rID = ?";
+		PreparedStatement stmt;
+		String mess = "";
+		if (role.equals("supervisor")){
+			mess = "dsMessage";
+		} else if (role.equals("dephead")){
+			mess = "dhMessage";
+		} else if (role.contentEquals("benco")) {
+			mess = "bcMessage";
+		}
+		try {
+			stmt = conn.prepareStatement(sql);
+			stmt.setString(1, mess);
+			stmt.setString(2, message);
+			stmt.setInt(3, rID);
+			stmt.executeUpdate();
+		} catch (SQLException e) {
+			e.printStackTrace();
+		}
+		
+	}
+
+	@Override
+	public void approveReimbursement(int rID, String role) {
+		String sql = "update Reimbursements set ? = 'approved' where rID = ?";
+		String status = "";
+		
+		if (role.equals("supervisor")){
+			status = "dsStatus";
+		} else if (role.equals("dephead")){
+			status = "dhStatus";
+		} else if (role.contentEquals("benco")) {
+			status = "bcStatus";
+		}
+		
+		PreparedStatement stmt;
+		
+		try {
+			stmt = conn.prepareStatement(sql);
+			stmt.setString(1, status);
+			stmt.setInt(2, rID);
+			stmt.executeUpdate();
+		} catch (SQLException e) {
+			e.printStackTrace();
+		}
+	}
+
+	
 
 }

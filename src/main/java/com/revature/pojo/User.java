@@ -13,6 +13,7 @@ public class User {
 	private int supervisor;
 	private int departmentHead;
 	private String role;
+	//either dephead, supervisor, or benco
 	private double availableReimbursement;
 	private List<Reimbursement> reimbursements;
 	

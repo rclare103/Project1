@@ -72,6 +72,15 @@ function getReimbursements() {
     xhr.send();
 }
 
+function showHideApprove(){
+    let x = document.getElementById("approval");
+    if (x.style.display === "none"){
+        x.style.display = "block";
+    } else {
+        x.style.display = "none";
+    }
+}
+
 window.onload = function(){
     this.getReimbursements();
 }

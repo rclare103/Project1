@@ -22,4 +22,10 @@ public interface ReimbursementService {
 	public List<Reimbursement> findReimbursementBySup(int userID);
 	
 	public List<Reimbursement> findReimbursementByDH(int userID);
+	
+	public void makeMessage(int rID);
+	
+	public void addMessage(String message, String role, int rID);
+	
+	public void approveReimbursement(int rID, String role);
 }

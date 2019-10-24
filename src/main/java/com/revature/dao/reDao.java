@@ -23,5 +23,11 @@ public interface reDao {
 	public List<Reimbursement> getReimbursementBySup(int userID);
 
 	public List<Reimbursement> getReimbursementByDH(int userID);
+	
+	public void createMessage(int rID);
+	
+	public void addMessage(String message, String role, int rID);
+	
+	public void approveReimbursement(int rID, String role);
 
 }
