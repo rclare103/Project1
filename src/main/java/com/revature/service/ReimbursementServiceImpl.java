@@ -40,4 +40,14 @@ public class ReimbursementServiceImpl implements ReimbursementService {
 		return reDao.getReimbursementByUser(userID);
 	}
 
+	@Override
+	public List<Reimbursement> findReimbursementBySup(int userID) {
+		return reDao.getReimbursementBySup(userID);
+	}
+
+	@Override
+	public List<Reimbursement> findReimbursementByDH(int userID) {
+		return reDao.getReimbursementByDH(userID);
+	}
+
 }

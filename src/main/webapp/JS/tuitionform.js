@@ -13,13 +13,13 @@ function getCost(){
     let cost = document.getElementById("cost").value;
     if (eventType === "university_cost"){
         constant = .8;
-    } elseif (eventType === "seminar"){
+    } else if (eventType === "seminar"){
         constant = .6;
-    } elseif (eventType === "certification_preparation_class"){
+    } else if (eventType === "certification_preparation_class"){
         constant = .75;
-    } elseif (eventType === "certification"){
+    } else if (eventType === "certification"){
         constant = 1;
-    } elseif (eventType === "technical_training"){
+    } else if (eventType === "technical_training"){
         constant = .9;
     } else {
         constant = .3;
@@ -33,5 +33,5 @@ function displayCost(){
 }
 
 window.onload = function(){
-    document.getElementsByName("eventType").addEventListener("click", this.getCost);
+    document.getElementById("estimateRe").addEventListener("click", this.getCost);
 }

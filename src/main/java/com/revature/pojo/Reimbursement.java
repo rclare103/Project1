@@ -19,7 +19,7 @@ public class Reimbursement {
 	private String dsStatus;
 	private String dhStatus;
 	private String bcStatus;
-	private String message;
+	//private String message;
 	private String finalGrade;
 	
 	public int getrID() {
@@ -115,13 +115,15 @@ public class Reimbursement {
 		this.bcStatus = bcStatus;
 	}
 	
-	
+	/*
 	public String getMessage() {
 		return message;
 	}
 	public void setMessage(String message) {
 		this.message = message;
 	}
+	*/
+	
 	public String getFinalGrade() {
 		return finalGrade;
 	}
@@ -146,7 +148,7 @@ public class Reimbursement {
 		result = prime * result + ((gradingFormat == null) ? 0 : gradingFormat.hashCode());
 		result = prime * result + ((justification == null) ? 0 : justification.hashCode());
 		result = prime * result + ((location == null) ? 0 : location.hashCode());
-		result = prime * result + ((message == null) ? 0 : message.hashCode());
+		//result = prime * result + ((message == null) ? 0 : message.hashCode());
 		result = prime * result + rID;
 		result = prime * result + ((submissionDate == null) ? 0 : submissionDate.hashCode());
 		result = prime * result + ((submissionTime == null) ? 0 : submissionTime.hashCode());
@@ -219,11 +221,13 @@ public class Reimbursement {
 				return false;
 		} else if (!location.equals(other.location))
 			return false;
+		/*
 		if (message == null) {
 			if (other.message != null)
 				return false;
 		} else if (!message.equals(other.message))
 			return false;
+			*/
 		if (rID != other.rID)
 			return false;
 		if (submissionDate == null) {
@@ -246,8 +250,9 @@ public class Reimbursement {
 				+ eventDate + ", eventTime=" + eventTime + ", location=" + location + ", description=" + description
 				+ ", cost=" + cost + ", gradingFormat=" + gradingFormat + ", justification=" + justification
 				+ ", submissionDate=" + submissionDate + ", submissionTime=" + submissionTime + ", dsStatus=" + dsStatus
-				+ ", dhStatus=" + dhStatus + ", bcStatus=" + bcStatus + ", message=" + message + ", finalGrade="
-				+ finalGrade + "]";
+				+ ", dhStatus=" + dhStatus + ", bcStatus=" + bcStatus + 
+				//", message=" + message + 
+				", finalGrade="	+ finalGrade + "]";
 	}
 	public Reimbursement(int rID, int userID, String eventType, LocalDate eventDate, LocalTime eventTime,
 			String location, String description, double cost, String gradingFormat, String justification,
@@ -269,7 +274,7 @@ public class Reimbursement {
 		this.dsStatus = dsStatus;
 		this.dhStatus = dhStatus;
 		this.bcStatus = bcStatus;
-		this.message = message;
+		//this.message = message;
 		this.finalGrade = finalGrade;
 	}
 	public Reimbursement() {

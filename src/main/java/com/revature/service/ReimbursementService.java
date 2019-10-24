@@ -18,4 +18,8 @@ public interface ReimbursementService {
 	public void updateReimbursement(Reimbursement re);
 	
 	public List<Reimbursement> findReimbursementByUser(int userID);
+	
+	public List<Reimbursement> findReimbursementBySup(int userID);
+	
+	public List<Reimbursement> findReimbursementByDH(int userID);
 }

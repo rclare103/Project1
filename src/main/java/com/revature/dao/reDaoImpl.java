@@ -32,7 +32,8 @@ public class reDaoImpl implements reDao {
 	 * 12. submissionTime Time not null,
 	 * 13. dsStatus varchar not null,
 	 * 14. dhStatus varchar not null,
-	 * 15. bcStatus varchar not null
+	 * 15. bcStatus varchar not null,
+	 * 16. finalGrade varchar not null
 	 */
 	
 	private static Connection conn = ConnectionFactory.getConnection();
@@ -67,8 +68,8 @@ public class reDaoImpl implements reDao {
 				re.setDsStatus(rs.getString(13));
 				re.setDhStatus(rs.getString(14));
 				re.setBcStatus(rs.getString(15));
-				re.setMessage(rs.getString(16));
-				re.setFinalGrade(rs.getString(17));
+				//re.setMessage(rs.getString(16));
+				re.setFinalGrade(rs.getString(16));
 			}
 		} catch (SQLException e) {
 			// TODO Auto-generated catch block
@@ -81,8 +82,8 @@ public class reDaoImpl implements reDao {
 	public void createReimbursement(Reimbursement re) {
 		String sql = "insert into Reimbursements ( userID, eventType, eventDate, eventTime, location, "
 				+ "description, cost, gradingFormat, justification, submissionDate, "
-				+ "submissionTime, dsStatus, dhStatus, bcStatus, message, finalGrade) "
-				+ "values (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?)";
+				+ "submissionTime, dsStatus, dhStatus, bcStatus, finalGrade) "
+				+ "values (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?)";
 		PreparedStatement stmt;
 		
 		try {
@@ -101,8 +102,8 @@ public class reDaoImpl implements reDao {
 			stmt.setString(12, re.getDsStatus());
 			stmt.setString(13, re.getDhStatus());
 			stmt.setString(14, re.getBcStatus());
-			stmt.setString(15,  re.getMessage());
-			stmt.setString(16, re.getFinalGrade());
+			//stmt.setString(15,  re.getMessage());
+			stmt.setString(15, re.getFinalGrade());
 			stmt.executeUpdate();
 		} catch (SQLException e) {
 			e.printStackTrace();
@@ -137,8 +138,9 @@ public class reDaoImpl implements reDao {
 				re.setDsStatus(rs.getString(13));
 				re.setDhStatus(rs.getString(14));
 				re.setBcStatus(rs.getString(15));
-				re.setMessage(rs.getString(16));
-				re.setFinalGrade(rs.getString(17));
+				//re.setMessage(rs.getString(16));
+				re.setFinalGrade(rs.getString(16));
+				reList.add(re);
 			}
 		} catch (SQLException e) {
 			e.printStackTrace();
@@ -153,7 +155,7 @@ public class reDaoImpl implements reDao {
 		String sql = "update Reimbursements " 
 				+ "set userID = ?, eventType = ?, eventDate = ?, eventTime = ?, location = ?, description = ?, "
 				+ "cost = ?, grading Format = ?, justification = ?, submissionDate = ?, "
-				+ "submissionTime = ?, dsStatus = ?, dhStatus = ?, bcStatus = ?, message = ?, finalGrade = ? "
+				+ "submissionTime = ?, dsStatus = ?, dhStatus = ?, bcStatus = ?, finalGrade = ? "
 				+ "where rID = ?";
 		PreparedStatement stmt;
 		
@@ -174,8 +176,8 @@ public class reDaoImpl implements reDao {
 			stmt.setString(13, re.getDhStatus());
 			stmt.setString(14, re.getBcStatus());
 			stmt.setInt(15, re.getrID());
-			stmt.setString(16,  re.getMessage());
-			stmt.setString(17,  re.getFinalGrade());
+			//stmt.setString(16,  re.getMessage());
+			stmt.setString(16,  re.getFinalGrade());
 			stmt.executeUpdate();
 		} catch (SQLException e) {
 			e.printStackTrace();
@@ -225,14 +227,97 @@ public class reDaoImpl implements reDao {
 				re.setDsStatus(rs.getString(13));
 				re.setDhStatus(rs.getString(14));
 				re.setBcStatus(rs.getString(15));
-				re.setMessage(rs.getString(16));
-				re.setFinalGrade(rs.getString(17));
+				//re.setMessage(rs.getString(16));
+				re.setFinalGrade(rs.getString(16));
 				reList.add(re);
 			}
 		} catch (SQLException e) {
 			e.printStackTrace();
 		}
 		
+		
+		return reList;
+	}
+
+	@Override
+	public List<Reimbursement> getReimbursementBySup(int userID) {
+		
+		String sql = "select * from Reimbursements where userID in "
+				+ "(select userID from Users where supervisor = ?)";
+		
+		List<Reimbursement> reList = new ArrayList<Reimbursement>();
+		
+		PreparedStatement stmt;
+		
+		try {
+			stmt = conn.prepareStatement(sql);
+			stmt.setInt(1, userID);
+			ResultSet rs = stmt.executeQuery();
+			while(rs.next()) {
+				Reimbursement re = new Reimbursement();
+				re.setrID(rs.getInt(1));
+				re.setUserID(rs.getInt(2));
+				re.setEventType(rs.getString(3));
+				re.setEventDate(rs.getDate(4).toLocalDate());
+				re.setEventTime(rs.getTime(5).toLocalTime());
+				re.setLocation(rs.getString(6));
+				re.setDescription(rs.getString(7));
+				re.setCost(rs.getDouble(8));
+				re.setGradingFormat(rs.getString(9));
+				re.setJustification(rs.getString(10));
+				re.setSubmissionDate(rs.getDate(11).toLocalDate());
+				re.setSubmissionTime(rs.getTime(12).toLocalTime());
+				re.setDsStatus(rs.getString(13));
+				re.setDhStatus(rs.getString(14));
+				re.setBcStatus(rs.getString(15));
+				//re.setMessage(rs.getString(16));
+				re.setFinalGrade(rs.getString(16));
+				reList.add(re);
+			}
+		} catch (SQLException e) {
+			e.printStackTrace();
+		}
+		
+		return reList;
+	}
+
+	@Override
+	public List<Reimbursement> getReimbursementByDH(int userID) {
+		String sql = "select * from Reimbursements where userID in "
+				+ "(select userID from Users where departmentHead = ?)";
+		
+		List<Reimbursement> reList = new ArrayList<Reimbursement>();
+		
+		PreparedStatement stmt;
+		
+		try {
+			stmt = conn.prepareStatement(sql);
+			stmt.setInt(1, userID);
+			ResultSet rs = stmt.executeQuery();
+			while(rs.next()) {
+				Reimbursement re = new Reimbursement();
+				re.setrID(rs.getInt(1));
+				re.setUserID(rs.getInt(2));
+				re.setEventType(rs.getString(3));
+				re.setEventDate(rs.getDate(4).toLocalDate());
+				re.setEventTime(rs.getTime(5).toLocalTime());
+				re.setLocation(rs.getString(6));
+				re.setDescription(rs.getString(7));
+				re.setCost(rs.getDouble(8));
+				re.setGradingFormat(rs.getString(9));
+				re.setJustification(rs.getString(10));
+				re.setSubmissionDate(rs.getDate(11).toLocalDate());
+				re.setSubmissionTime(rs.getTime(12).toLocalTime());
+				re.setDsStatus(rs.getString(13));
+				re.setDhStatus(rs.getString(14));
+				re.setBcStatus(rs.getString(15));
+				//re.setMessage(rs.getString(16));
+				re.setFinalGrade(rs.getString(16));
+				reList.add(re);
+			}
+		} catch (SQLException e) {
+			e.printStackTrace();
+		}
 		
 		return reList;
 	}

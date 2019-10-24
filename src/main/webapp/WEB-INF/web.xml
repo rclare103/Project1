@@ -58,4 +58,24 @@
     <servlet-name>EmpHomeServlet</servlet-name>
     <url-pattern>/emphome</url-pattern>
   </servlet-mapping>
+  <servlet>
+    <description></description>
+    <display-name>LogoutServlet</display-name>
+    <servlet-name>LogoutServlet</servlet-name>
+    <servlet-class>com.revature.servlets.LogoutServlet</servlet-class>
+  </servlet>
+  <servlet-mapping>
+    <servlet-name>LogoutServlet</servlet-name>
+    <url-pattern>/logout</url-pattern>
+  </servlet-mapping>
+  <servlet>
+    <description></description>
+    <display-name>SupHomeServlet</display-name>
+    <servlet-name>SupHomeServlet</servlet-name>
+    <servlet-class>com.revature.servlets.SupHomeServlet</servlet-class>
+  </servlet>
+  <servlet-mapping>
+    <servlet-name>SupHomeServlet</servlet-name>
+    <url-pattern>/suphome</url-pattern>
+  </servlet-mapping>
 </web-app>
