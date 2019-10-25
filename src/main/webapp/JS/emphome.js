@@ -49,7 +49,6 @@ function getReimbursements() {
 function addRow(re) {
     let newRow = document.createElement("tr");
     let reIDCol = document.createElement("td");
-    console.log(re.rID);
     reIDCol.innerHTML = re.rID;
     let type = document.createElement("td");
     type.innerHTML = re.eventType;
@@ -79,7 +78,7 @@ function getMessages() {
         if (xhr.readyState === 4) {
             if (xhr.status === 200) {
                 messageList = JSON.parse(xhr.responseText);
-                displayMessages
+                displayMessages(messageList);
             } else {
                 document.getElementById("reHeader").innerHTML = "Your messages: failed to load";
             }
@@ -124,4 +123,5 @@ function addMessageRow(message) {
     newRow.appendChild(dsMessageCol);
     newRow.appendChild(dhMessageCol);
     newRow.appendChild(bcMessageCol);
+    return newRow;
 }
