@@ -38,6 +38,10 @@ public class HomeServlet extends HttpServlet {
 	 * @see HttpServlet#doGet(HttpServletRequest request, HttpServletResponse response)
 	 */
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
+		if (request.getSession(false) == null) {
+			response.sendRedirect("login.html");
+		}
+		
 		User user = (User) request.getSession(false).getAttribute("user");
 		ObjectMapper om = new ObjectMapper();
 		om.registerModule(new JavaTimeModule());

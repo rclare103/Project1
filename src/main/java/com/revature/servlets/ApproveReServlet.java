@@ -31,6 +31,9 @@ public class ApproveReServlet extends HttpServlet {
 	 * @see HttpServlet#doGet(HttpServletRequest request, HttpServletResponse response)
 	 */
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
+		if (request.getSession(false) == null) {
+			response.sendRedirect("login.html");
+		}
 		User user = (User) request.getSession().getAttribute("user");
 		debug("Succesfully loaded user in ApproveReServlet: " + user.getUsername());
 		String role = user.getRole();

@@ -38,6 +38,9 @@ public class EmpHomeServlet extends HttpServlet {
 	 */
 	protected void doGet(HttpServletRequest request, HttpServletResponse response)
 			throws ServletException, IOException {
+		if (request.getSession(false) == null) {
+			response.sendRedirect("login.html");
+		}
 		User user = (User) request.getSession().getAttribute("user");
 		debug("Succesfully entered doGet userID = " + user.getUserID());
 		ObjectMapper om = new ObjectMapper();

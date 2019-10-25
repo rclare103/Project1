@@ -40,6 +40,9 @@ public class TuitionFormServlet extends HttpServlet {
 	 * @see HttpServlet#doGet(HttpServletRequest request, HttpServletResponse response)
 	 */
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
+		if (request.getSession(false) == null) {
+			response.sendRedirect("login.html");
+		}
 		User user = (User) request.getSession(false).getAttribute("user");
 		double availRe = user.getAvailableReimbursement();
 		
@@ -53,6 +56,9 @@ public class TuitionFormServlet extends HttpServlet {
 	 * @see HttpServlet#doPost(HttpServletRequest request, HttpServletResponse response)
 	 */
 	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
+		if (request.getSession(false) == null) {
+			response.sendRedirect("login.html");
+		}
 		User user = (User) request.getSession(false).getAttribute("user");
 		int userID = user.getUserID();
 		debug("userID: " + userID);

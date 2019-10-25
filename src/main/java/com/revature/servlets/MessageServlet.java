@@ -39,6 +39,10 @@ public class MessageServlet extends HttpServlet {
 	 * @see HttpServlet#doGet(HttpServletRequest request, HttpServletResponse response)
 	 */
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
+		if (request.getSession(false) == null) {
+			response.sendRedirect("login.html");
+		}
+		
 		User user = (User) request.getSession().getAttribute("user");
 		debug("Succesfully loaded user in MessageServlet: " + user.getUsername());
 		int rID = Integer.parseInt(request.getParameter("rIDshow"));
