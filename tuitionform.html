@@ -1,0 +1,88 @@
+<!DOCTYPE html>
+<html>
+    <head>
+    <title>Tuition Reimbursement</title>
+        <link rel="stylesheet" type="text/css" href="CSS/tuitioncss.css">
+        <script src="jquery-3.4.1.min.js"></script>
+    </head>
+<body>
+
+<h2>Employee Tuition Reimbursement Form</h2>
+
+<form method = "POST" action="tuitionform">
+<div align="left">
+  <label for="firstname">First Name:</label>
+  <br>
+  <input type="text" name="firstname" value="">
+  <br>
+  <label for="lastname">Last Name:</label>
+  <br>
+  <input type="text" name="lastname" value="">
+  <br>
+  <label for="location">Location:</label>
+  <br>
+  <input type="text" name="location" value="">
+  <br>
+</div>
+<div align="left">
+  Event Cost:<br>
+  <input type="text" id = "cost" name="cost" placeholder="" value = "">
+  <br>
+</div>
+
+<div align="left">
+  <label align="left">Current available reimbursement amount: 1000</label>
+</div>
+
+<div align="left">
+        <p>Event Date: <br> 
+          <input type="date" name="eventDate"></p>   
+      </div>
+
+<div align="left">
+  <p>Event Time: <br> 
+    <input type="time" name="eventTime"></p>   
+</div>
+  <div class="form-group" align="left">
+    <label for="description">
+        Event Description:</label>
+        <br>
+    <textarea class="form-control" type="textarea" name="description"
+    id="eventDesc" placeholder="Enter the event description:"
+    maxlength="6000" rows="7" cols="50"></textarea>
+</div>
+<div class="form-group" align="left">
+    <label for="justification">
+        Event Justification:</label>
+        <br>
+    <textarea class="form-control" type="textarea" name="justification"
+    id="eventJust" placeholder="Enter the event justification:"
+    maxlength="6000" rows="7" cols="50"></textarea>
+</div>
+<div align="left">
+   <p>Type of event for reimbursement</p>
+  <input type="radio" name="eventType" value="university_course" > University Course <br>
+  <input type="radio" name="eventType" value="seminars"> Seminar <br>
+  <input type="radio" name="eventType" value="certifcation_preparation_course"> Certification Preparation <br>
+  <input type="radio" name="eventType" value="certification" > Certification <br>
+  <input type="radio" name="eventType" value="technical_training"> Technical Training <br>
+  <input type="radio" name="eventType" value="other"> Other <br>
+</div>
+<br>
+<div align="left">
+        <p>Grading Format</p>
+       <input type="radio" name="gradingFormat" value="A - F" > A - F <br>
+       <input type="radio" name="gradingFormat" value="Presentation"> Presentation <br>
+     </div>
+
+  <br>
+<div>Estimated Reimbursement: <span id = 'estimate'></span><button id = "estimateRe">Estimate Reimbursement</button></div>
+  <input type="submit" value="Request Approval">
+
+</form> 
+
+</body>
+<script href = 'JS/tuitionform.js'></script>
+
+
+</html>
