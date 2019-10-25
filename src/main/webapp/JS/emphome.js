@@ -128,3 +128,14 @@ function addMessageRow(message) {
     newRow.appendChild(bcMessageCol);
     return newRow;
 }
+
+function showHideFinalGrade() {
+
+    getMessages();
+    let x = document.getElementById("Grade");
+    if (x.style.display === "none") {
+        x.style.display = "block";
+    } else {
+        x.style.display = "none";
+    }
+}

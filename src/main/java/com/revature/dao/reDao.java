@@ -30,5 +30,7 @@ public interface reDao {
 	public void addMessage(String message, String role, int rID);
 	
 	public void approveReimbursement(int rID, String role);
+	
+	public void addFinalGrade(int rID, String finalGrade);
 
 }

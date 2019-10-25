@@ -56,6 +56,9 @@ public class EmpHomeServlet extends HttpServlet {
 	 */
 	protected void doPost(HttpServletRequest request, HttpServletResponse response)
 			throws ServletException, IOException {
+		int rID = Integer.parseInt(request.getParameter("rID"));
+		String finalGrade = request.getParameter("finalGrade");
+		
 		
 		
 	}

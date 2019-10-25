@@ -407,6 +407,23 @@ public class reDaoImpl implements reDao {
 		}
 	}
 
+	@Override
+	public void addFinalGrade(int rID, String finalGrade) {
+		String sql = "update Reimbursements set finalGrade = ? where rID = ?";
+		
+		PreparedStatement stmt;
+		
+		try {
+			stmt = conn.prepareStatement(sql);
+			stmt.setString(1, finalGrade);
+			stmt.setInt(2, rID);
+			stmt.executeUpdate();
+		} catch (SQLException e) {
+			e.printStackTrace();
+		}
+		
+	}
+
 	
 
 }

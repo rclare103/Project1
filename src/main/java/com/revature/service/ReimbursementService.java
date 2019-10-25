@@ -29,4 +29,5 @@ public interface ReimbursementService {
 	
 	public void approveReimbursement(int rID, String role);
 	
+	public void addFinalGrade(int rID, String finalGrade);
 }

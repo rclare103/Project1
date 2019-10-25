@@ -68,6 +68,12 @@ public class ReimbursementServiceImpl implements ReimbursementService {
 		
 	}
 
+	@Override
+	public void addFinalGrade(int rID, String finalGrade) {
+		reDao.addFinalGrade(rID, finalGrade);
+		
+	}
+
 	
 	
 
