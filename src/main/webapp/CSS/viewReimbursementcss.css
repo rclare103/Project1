@@ -28,3 +28,104 @@ td {
 th {
     font-weight: bold;
 }
+
+
+table.timecard {
+	margin-left: auto;
+    margin-right: auto;
+    margin-top: 20%;
+	width: 800px;
+	border: 1px solid #fff; /*for older IE*/
+
+}
+
+table.timecard caption {
+	background-color: #88c4ff;
+	color: #fff;
+	font-size: x-large;
+	font-weight: bold;
+	letter-spacing: .3em;
+}
+
+table.timecard thead th {
+	padding: 8px;
+	background-color: #88c4ff;
+	font-size: large;
+}
+
+table.timecard thead th#eventTypeID{
+	width: 40%;	
+}
+
+table.timecard thead th#reID, table.timecard thead th#eventDateID, table.timecard thead th#eventCostID, table.timecard thead th#supID, table.timecard thead th#depID, table.timecard thead th#bencoID {
+	width: 10%;
+}
+
+table.timecard th, table.timecard td {
+	padding: 3px;
+	border-width: 1px;
+	border-style: solid;
+	border-color: #ffffff #ccc;
+}
+
+table.timecard td {
+	text-align: right;
+}
+
+table.timecard tbody th {
+	text-align: left;
+	font-weight: normal;
+}
+
+table.timecard tfoot {
+	font-weight: bold;
+	font-size: large;
+	background-color: #687886;
+	color: #fff;
+}
+
+table.timecard tr.even {
+	background-color: #fde9d9;
+}
+
+.custBtn {
+    background: rgb(254,231,154);
+    background: -moz-linear-gradient(top,  rgba(254,231,154,1) 0%, rgba(254,193,81,1) 100%);
+    background: -webkit-linear-gradient(top,  rgba(254,231,154,1) 0%,rgba(254,193,81,1) 100%);
+    background: -o-linear-gradient(top,  rgba(254,231,154,1) 0%,rgba(254,193,81,1) 100%);
+    background: -ms-linear-gradient(top,  rgba(254,231,154,1) 0%,rgba(254,193,81,1) 100%);
+    background: linear-gradient(top,  rgba(254,231,154,1) 0%,rgba(254,193,81,1) 100%);
+    filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#fee79a', endColorstr='#fec151',GradientType=0 );
+    -webkit-border-radius: 30px;
+    -moz-border-radius: 30px;
+    -ms-border-radius: 30px;
+    -o-border-radius: 30px;
+    border-radius: 30px;
+    -webkit-box-shadow: 0 1px 0 rgba(255,255,255,0.8) inset;
+    -moz-box-shadow: 0 1px 0 rgba(255,255,255,0.8) inset;
+    -ms-box-shadow: 0 1px 0 rgba(255,255,255,0.8) inset;
+    -o-box-shadow: 0 1px 0 rgba(255,255,255,0.8) inset;
+    box-shadow: 0 1px 0 rgba(255,255,255,0.8) inset;
+    border: 1px solid #D69E31;
+    color: #85592e;
+    cursor: pointer;
+    float: left;
+    font: bold 15px Garamond;
+    height: 35px;
+    margin: 20px 20px 35px 15px;
+    position: relative;
+    text-shadow: 0 1px 0 rgba(255,255,255,0.5);
+    width: 200px;
+    padding-left: 5px;
+    padding-bottom: 5px;
+    padding-top: 5px;
+    padding-right: 5px;
+    
+  }
+  
+  form{
+  
+  margin-left: 20;
+  margin-right: 20%;
+  }
+  
