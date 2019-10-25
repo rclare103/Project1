@@ -1,28 +1,34 @@
 package com.revature.servlets;
 
-import static com.revature.util.LoggerUtil.debug;
+import static com.revature.util.LoggerUtil.info;
 
 import java.io.IOException;
+import java.util.List;
+
 import javax.servlet.ServletException;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
+import com.fasterxml.jackson.databind.ObjectMapper;
+import com.fasterxml.jackson.datatype.jsr310.JavaTimeModule;
+import com.revature.pojo.Reimbursement;
 import com.revature.pojo.User;
-import com.revature.service.ReimbursementService;
 import com.revature.service.ReimbursementServiceImpl;
 
+import com.revature.util.LoggerUtil.*;
+
 /**
- * Servlet implementation class ApproveReServlet
+ * Servlet implementation class DHHomeServlet
  */
-public class ApproveReServlet extends HttpServlet {
+public class DHHomeServlet extends HttpServlet {
 	private static final long serialVersionUID = 1L;
-	private static ReimbursementService reService = new ReimbursementServiceImpl();
+	private static ReimbursementServiceImpl reService = new ReimbursementServiceImpl();
        
     /**
      * @see HttpServlet#HttpServlet()
      */
-    public ApproveReServlet() {
+    public DHHomeServlet() {
         super();
         // TODO Auto-generated constructor stub
     }
@@ -32,21 +38,14 @@ public class ApproveReServlet extends HttpServlet {
 	 */
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		User user = (User) request.getSession().getAttribute("user");
-		debug("Succesfully loaded user in ApproveReServlet: " + user.getUsername());
-		String role = user.getRole();
-		int rID = Integer.parseInt(request.getParameter("rID"));
-		
-		reService.approveReimbursement(rID, role);
-		if (user.getRole().equals("supervisor")){ 
-			response.sendRedirect("supervisorhome.html");
-		} else if (user.getRole().equals("dephead")){
-			response.sendRedirect("dhhome.html");
-		} else if (user.getRole().equals("benco")) {
-			response.sendRedirect("bencohome.html");
-		} else {
-			response.sendRedirect("login.html");
-		}
-		
+		info("Succesfully entered doGet DHHomeServlet userID = " + user.getUserID());
+		ObjectMapper om = new ObjectMapper();
+		om.registerModule(new JavaTimeModule());
+				
+		List<Reimbursement> reList = reService.findReimbursementByDH(user.getUserID());
+		info("List: " + reList.toString());
+		response.setContentType("text/plain");
+		response.getWriter().write(om.writeValueAsString(reList));
 	}
 
 	/**

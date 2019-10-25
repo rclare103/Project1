@@ -49,7 +49,7 @@ public class MessageServlet extends HttpServlet {
 		if (user.getRole().equals("supervisor")){ 
 			response.sendRedirect("supervisorhome.html");
 		} else if (user.getRole().equals("dephead")){
-			response.sendRedirect("depheadhome.html");
+			response.sendRedirect("dhhome.html");
 		} else if (user.getRole().equals("benco")) {
 			response.sendRedirect("bencohome.html");
 		} else {

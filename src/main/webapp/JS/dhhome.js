@@ -70,7 +70,7 @@ function getReimbursements() {
             document.getElementById("reHeader").innerHTML = "Fetching Request";
         }
     }
-    xhr.open("GET", "suphome", true);
+    xhr.open("GET", "dhhome", true);
     xhr.send();
 }
 
@@ -130,12 +130,9 @@ function addMessageRow(message) {
     let newRow = document.createElement("tr");
     let reIDCol = document.createElement("td");
     reIDCol.innerHTML = message.rID;
-    let dhMessageCol = document.createElement("td");
-    dhMessageCol.innerHTML = message.dhMessage;
     let bcMessageCol = document.createElement("td");
     bcMessageCol.innerHTML = message.bcMessage;
     newRow.appendChild(reIDCol);
-    newRow.appendChild(dhMessageCol);
     newRow.appendChild(bcMessageCol);
     return newRow;
 }

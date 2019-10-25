@@ -71,6 +71,10 @@ public class LoginServlet extends HttpServlet {
 				 
 				 response.sendRedirect("supervisorhome.html"); 
 			 
+			 } else if (user.getRole().contentEquals("dephead")) {
+				 response.sendRedirect("dhhome.html");
+			 } else if (user.getRole().contentEquals("benco")) {
+				 response.sendRedirect("bencohome.html");
 			 } else {
 			response.getWriter().write("Sorry, but you were not able to login correctly :(");
 			}

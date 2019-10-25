@@ -8,6 +8,7 @@ import com.revature.pojo.User;
 import com.revature.service.ReimbursementService;
 import com.revature.service.ReimbursementServiceImpl;
 import com.revature.service.UserServiceImpl;
+import com.revature.service.MessageServiceImpl;
 
 
 public class Driver {
@@ -15,6 +16,7 @@ public class Driver {
 	private static UserDaoImpl userDao = new UserDaoImpl();
 	private static UserServiceImpl userService = new UserServiceImpl();
 	private static ReimbursementService reService = new ReimbursementServiceImpl();
+	private static MessageServiceImpl messageService = new MessageServiceImpl();
 	
 	public static void main(String[] args) {
 		
@@ -33,5 +35,6 @@ public class Driver {
 		//List<Reimbursement> reList = reService.findReimbursementByUser(user.getUserID());
 		List<Reimbursement> reList2 = reService.findReimbursementBySup(user.getUserID());
 		System.out.println("Driver: " + reList2.get(0));
+		messageService.makeMessage(3);
 	}
 }

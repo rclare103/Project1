@@ -98,4 +98,14 @@
     <servlet-name>ApproveReServlet</servlet-name>
     <url-pattern>/approvere</url-pattern>
   </servlet-mapping>
+  <servlet>
+    <description></description>
+    <display-name>DHHomeServlet</display-name>
+    <servlet-name>DHHomeServlet</servlet-name>
+    <servlet-class>com.revature.servlets.DHHomeServlet</servlet-class>
+  </servlet>
+  <servlet-mapping>
+    <servlet-name>DHHomeServlet</servlet-name>
+    <url-pattern>/dhhome</url-pattern>
+  </servlet-mapping>
 </web-app>
