@@ -31,16 +31,18 @@
         <a href="tuitionform.html">Submit new reimbursement request</a>
     </footer>
 
-    <form method = "GET" action = "logout">
-        <button type = "submit">Log Out</button>
+    <form method="GET" action="logout">
+        <button type="submit">Log Out</button>
     </form>
 
-    <button onclick="viewMessages()">View Messages</button>
-    <form id = "viewMessage" style = "display:none">
-        <label for = "rIDmess">Enter rID: </label>
+    <button onclick="viewMessages()">View Messages:</button>
+    <div id="viewMessage" style="display:none">
+        <!--
+        <label for = "rIDmess">Enter rID to display messages: </label>
         <input type = "text" name = "rIDmess" id = "rIDmess">
-        <button id = "viewMess">See messages</button>
-        <table id = "messTable">
+        <button id = "viewMess" onclick = "displayMessages()">Display messages</button>
+        -->
+        <table id="messTable">
             <tr>
                 <th>Reimbursement ID</th>
                 <th>Supervisor Message</th>
@@ -48,7 +50,7 @@
                 <th>Benefits Coordinator Message</th>
             </tr>
         </table>
-    </form>
+    </div>
     <script src='JS/emphome.js'></script>
 </body>
 

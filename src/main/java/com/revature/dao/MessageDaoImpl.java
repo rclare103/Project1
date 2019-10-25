@@ -9,6 +9,7 @@ import java.util.List;
 
 import com.revature.pojo.Message;
 import com.revature.util.ConnectionFactory;
+import static com.revature.util.LoggerUtil.*;
 
 public class MessageDaoImpl implements MessageDao {
 	
@@ -16,6 +17,7 @@ public class MessageDaoImpl implements MessageDao {
 
 	@Override
 	public void createMessage(int rID) {
+		debug("creating Message with rID: " + rID);
 		String sql = "insert into Messages (rID) values (?)";
 		PreparedStatement stmt;
 		

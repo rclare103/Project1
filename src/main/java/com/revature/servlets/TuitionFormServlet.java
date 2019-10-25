@@ -13,6 +13,7 @@ import javax.servlet.http.HttpServletResponse;
 
 import com.revature.pojo.Reimbursement;
 import com.revature.pojo.User;
+import com.revature.service.MessageServiceImpl;
 import com.revature.service.ReimbursementServiceImpl;
 
 import static com.revature.util.LoggerUtil.*;
@@ -24,6 +25,7 @@ import static com.revature.util.LoggerUtil.*;
 public class TuitionFormServlet extends HttpServlet {
 	private static final long serialVersionUID = 1L;
     private static ReimbursementServiceImpl reService = new ReimbursementServiceImpl();
+    private static MessageServiceImpl messageService = new MessageServiceImpl();
     /**
      * @see HttpServlet#HttpServlet()
      */
@@ -106,7 +108,7 @@ public class TuitionFormServlet extends HttpServlet {
 		re.setDhStatus(dhStatus);
 		
 		reService.makeReimbursement(re);
-		reService.makeMessage(re.getrID());
+		messageService.makeMessage(re.getrID());
 		
 		response.sendRedirect("emphome.html");
 	}

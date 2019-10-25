@@ -11,7 +11,7 @@ class Reimbursement{
         this.bcStatus = bcStatus
     }
 }
-
+*/
 class Message{
     constructor(rID, dsMessage, dhMessage, bcMessage){
         this.rID = rID;
@@ -20,7 +20,7 @@ class Message{
         this.bcMessage = bcMessage;
     }
 }
-*/
+
 var messageList;
 
 function displayReimbursementList(reList){
@@ -64,6 +64,8 @@ function addRow(re){
     date.innerHTML = re.eventDate;
     let cost = document.createElement("td");
     cost.innerHTML = re.cost;
+    let descriptioncol = document.createElement("td");
+    descriptioncol.innerHTML = re.description;
     let dsstatus = document.createElement("td");
     dsstatus.innerHTML = re.dsStatus;
     let dhstatus = document.createElement("td");

@@ -41,7 +41,7 @@ public class MessageServlet extends HttpServlet {
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		User user = (User) request.getSession().getAttribute("user");
 		debug("Succesfully loaded user in MessageServlet: " + user.getUsername());
-		int rID = Integer.parseInt(request.getParameter("rID"));
+		int rID = Integer.parseInt(request.getParameter("rIDshow"));
 		String message = request.getParameter("message");
 		String role = user.getRole();
 		

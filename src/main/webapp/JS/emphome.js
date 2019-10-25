@@ -1,6 +1,6 @@
-class Reimbursement{
-    constructor(reID, eventType, eventDate, cost, dsStatus, dhStatus, bcStatus){
-        this.reID = reID;
+class Reimbursement {
+    constructor(rID, eventType, eventDate, cost, dsStatus, dhStatus, bcStatus) {
+        this.rID = rID;
         this.eventType = eventType;
         this.eventDate = eventDate;
         this.cost = cost;
@@ -10,55 +10,43 @@ class Reimbursement{
     }
 }
 
+window.onload = function () {
+    this.getReimbursements();
+    this.getMessages();
+}
 
 var reList;
-function displayReimbursementList(reList){
+var messageList;
+var reIDList = new Array();
+
+function displayReimbursementList(reList) {
     let table = document.getElementById("reTable");
-    
-    for (re of reList){
-        table.appendChild(addRow(re)); 
-    }    
-}
 
-function displayMessages(){
-    let rIDmess = document.getElementById("rIDmess").value;
-    let messTable = document.getElementById("messTable");
-    for (message of MessageList){
-        if (message.rID === rIDmess){
-            let newRow = document.createElement("tr");
-            let reIDCol = document.createElement("td");
-            reIDCol.innerHTML = message.rID;
-            let dhMessageCol = document.createElement("td");
-            dhMessageCol.innerHTML = message.dhMessage;
-            let bcMessageCol = document.createElement("td");
-            bcMessageCol.innerHTML = message.bcMessage;
-        }
+    for (re of reList) {
+        reIDList.push(re.rID)
+        table.appendChild(addRow(re));
     }
 }
 
-/*
-function getStatus(re){
-    let status = "";
-    console.log("re.bcStatus: " + re.bcStatus);
-    console.log("re.dhStatus: " + re.dhStatus);
-    console.log("re.dsStatus: " + re.dsStatus);
-    if (re.bcStatus === "approved" && re.dhStatus === "approved"){
-        if (re.dsStatus === "approved"){
-            status = "approved";
+function getReimbursements() {
+    let xhr = new XMLHttpRequest();
+    xhr.onreadystatechange = function () {
+        if (xhr.readyState === 4) {
+            if (xhr.status === 200) {
+                reList = JSON.parse(xhr.responseText);
+                displayReimbursementList(reList);
+            } else {
+                document.getElementById("reHeader").innerHTML = "Your reimbursements: failed to load";
+            }
+        } else {
+            document.getElementById("reHeader").innerHTML = "Fetching Request";
         }
-        
-    } else if (re.bcStatus === "urgent"|| re.dhStatus == "urgent"){
-        status = "urgent";
-    } else if (re.dsStatus === "urgent"){
-        status = "urgent";
-    } else {
-        status = "pending";
     }
-
-    return status;
+    xhr.open("GET", "emphome", true);
+    xhr.send();
 }
-*/
-function addRow(re){
+
+function addRow(re) {
     let newRow = document.createElement("tr");
     let reIDCol = document.createElement("td");
     console.log(re.rID);
@@ -85,24 +73,55 @@ function addRow(re){
     return newRow;
 }
 
-function getReimbursements() {
+function getMessages() {
     let xhr = new XMLHttpRequest();
-    xhr.onreadystatechange = function(){
-        if (xhr.readyState === 4){
-            if (xhr.status === 200){
-                reList = JSON.parse(xhr.responseText);
-                displayReimbursementList(reList);
-            } else{
-                document.getElementById("reHeader").innerHTML = "Your reimbursements: failed to load";
+    xhr.onreadystatechange = function () {
+        if (xhr.readyState === 4) {
+            if (xhr.status === 200) {
+                messageList = JSON.parse(xhr.responseText);
+                displayMessages
+            } else {
+                document.getElementById("reHeader").innerHTML = "Your messages: failed to load";
             }
-        } else{
-            document.getElementById("reHeader").innerHTML = "Fetching Request";
+        } else {
+            document.getElementById("reHeader").innerHTML = "Fetching Messages";
         }
     }
-    xhr.open("GET", "emphome", true);
+    xhr.open("POST", "message", true);
     xhr.send();
 }
 
-window.onload = function(){
-    this.getReimbursements();
+function viewMessages() {
+    let x = document.getElementById("viewMessage");
+    if (x.style.display === "none") {
+        x.style.display = "block";
+    } else {
+        x.style.display = "none";
+    }
+}
+
+
+function displayMessages(messageList) {
+    let messTable = document.getElementById("messTable");
+    for (message of messageList) {
+        if (reIDList.includes(message.rID)) {
+            messTable.appendChild(addMessageRow(message));
+        }
+    }
+}
+
+function addMessageRow(message) {
+    let newRow = document.createElement("tr");
+    let reIDCol = document.createElement("td");
+    reIDCol.innerHTML = message.rID;
+    let dsMessageCol = document.createElement("td");
+    dsMessageCol.innerHTML = message.dsMessage;
+    let dhMessageCol = document.createElement("td");
+    dhMessageCol.innerHTML = message.dhMessage;
+    let bcMessageCol = document.createElement("td");
+    bcMessageCol.innerHTML = message.bcMessage;
+    newRow.appendChild(reIDCol);
+    newRow.appendChild(dsMessageCol);
+    newRow.appendChild(dhMessageCol);
+    newRow.appendChild(bcMessageCol);
 }
