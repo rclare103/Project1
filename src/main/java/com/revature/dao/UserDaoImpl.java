@@ -58,7 +58,7 @@ public class UserDaoImpl implements UserDao {
 		}
 		
 		user.setReimbursements(reDao.getReimbursementByUser(user.getUserID()));
-		
+		user.setAvailableReimbursement(reCalc.getAvailableReimbursement(user));
 		return user;
 	}
 	

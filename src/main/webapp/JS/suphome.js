@@ -1,10 +1,14 @@
+/*
 class Reimbursement{
-    constructor(reID, eventType, eventDate, eventCost, status){
+    constructor(reID, userID, eventType, eventDate, cost, dsStatus, dhStatus, bcStatus){
         this.reID = reID;
+        this.userID = userID;
         this.eventType = eventType;
         this.eventDate = eventDate;
-        this.eventCost = eventCost;
-        this.Status = status;
+        this.cost = cost;
+        this.dsStatus = dsStatus;
+        this.dhStatus = dhStatus;
+        this.bcStatus = bcStatus
     }
 }
 
@@ -16,10 +20,7 @@ class Message{
         this.bcMessage = bcMessage;
     }
 }
-
-window.onload = function(){
-    this.getMessages();
-}
+*/
 var messageList;
 
 function displayReimbursementList(reList){
@@ -30,6 +31,7 @@ function displayReimbursementList(reList){
     }    
 }
 
+/*
 function getStatus(re){
     let status = "";
     if (re.bcStatus === "approved" && re.dhStatus === "approved"){
@@ -47,25 +49,35 @@ function getStatus(re){
 
     return status;
 }
-
+*/
 function addRow(re){
     let newRow = document.createElement("tr");
     let reIDCol = document.createElement("td");
+    console.log(re.rID);
     reIDCol.innerHTML = re.rID;
+    let userIDCol = document.createElement("td");
+    userIDCol.innerHTML = re.userID;
+    console.log(re.userID);
     let type = document.createElement("td");
     type.innerHTML = re.eventType;
     let date = document.createElement("td");
     date.innerHTML = re.eventDate;
     let cost = document.createElement("td");
     cost.innerHTML = re.cost;
-    let status = document.createElement("td");
-    status.innerHTML = getStatus(re);
+    let dsstatus = document.createElement("td");
+    dsstatus.innerHTML = re.dsStatus;
+    let dhstatus = document.createElement("td");
+    dhstatus.innerHTML = re.dhStatus;
+    let bcstatus = document.createElement("td");
+    bcstatus.innerHTML = re.bcStatus;
     newRow.appendChild(reIDCol);
+    newRow.appendChild(userIDCol);
     newRow.appendChild(type);
     newRow.appendChild(date);
     newRow.appendChild(cost);
-    newRow.appendChild(status);
-
+    newRow.appendChild(dsstatus);
+    newRow.appendChild(dhstatus);
+    newRow.appendChild(bcstatus);
     return newRow;
 }
 
@@ -115,6 +127,7 @@ function displayMessages(){
             dhMessageCol.innerHTML = message.dhMessage;
             let bcMessageCol = document.createElement("td");
             bcMessageCol.innerHTML = message.bcMessage;
+            messTable.appendChild(newRow);
         }
     }
 }
@@ -148,4 +161,5 @@ function viewMessages(){
 
 window.onload = function(){
     this.getReimbursements();
+    this.getMessages();
 }

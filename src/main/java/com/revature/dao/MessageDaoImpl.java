@@ -31,21 +31,21 @@ public class MessageDaoImpl implements MessageDao {
 
 	@Override
 	public void addMessage(String message, String role, int rID) {
-		String sql = "update Messages set ? = ? where rID = ?";
-		PreparedStatement stmt;
-		String mess = "";
+		String sql = "";
+		
 		if (role.equals("supervisor")){
-			mess = "dsMessage";
+			sql = "update Messages set dsMessage = ? where rID = ?";
 		} else if (role.equals("dephead")){
-			mess = "dhMessage";
+			sql = "update Messages set dhMessage = ? where rID = ?";
 		} else if (role.contentEquals("benco")) {
-			mess = "bcMessage";
+			sql = "update Messages set bcMessage = ? where rID = ?";
 		}
+		
+		PreparedStatement stmt;
 		try {
 			stmt = conn.prepareStatement(sql);
-			stmt.setString(1, mess);
-			stmt.setString(2, message);
-			stmt.setInt(3, rID);
+			stmt.setString(1, message);
+			stmt.setInt(2, rID);
 			stmt.executeUpdate();
 		} catch (SQLException e) {
 			e.printStackTrace();

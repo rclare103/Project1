@@ -46,8 +46,15 @@ public class MessageServlet extends HttpServlet {
 		String role = user.getRole();
 		
 		messageService.addMessage(message, role, rID);
-		
-		
+		if (user.getRole().equals("supervisor")){ 
+			response.sendRedirect("supervisorhome.html");
+		} else if (user.getRole().equals("dephead")){
+			response.sendRedirect("depheadhome.html");
+		} else if (user.getRole().equals("benco")) {
+			response.sendRedirect("bencohome.html");
+		} else {
+			response.sendRedirect("login.html");
+		}
 		
 	}
 

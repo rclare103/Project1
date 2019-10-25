@@ -13,22 +13,28 @@
     <div class='container'>
         <h1 id="reHeader">
             Pending Reimbursements:
-            <table id="reTable">
-                <tr>
-                    <th>Reimbursement ID</th>
-                    <th>User ID</th>
-                    <th>Event Type</th>
-                    <th>Event Date</th>
-                    <th>Event Cost</th>
-                    <th>Status</th>
-                    <th>Message</th>
-                </tr>
-            </table>
         </h1>
+        <table id="reTable">
+            <tr>
+                <th>Reimbursement ID</th>
+                <th>User ID</th>
+                <th>Event Type</th>
+                <th>Event Date</th>
+                <th>Event Cost</th>
+                <th>Supervisor Status</th>
+                <th>Department Head Status</th>
+                <th>Benefits Coordinator Status</th>
+                
+            </tr>
+        </table>
+
     </div>
+
     <form method="GET" action="logout">
         <button type="submit">Log Out</button>
     </form>
+
+    
     <button onclick="showHideApprove()">Approve Reimbursement</button>
     <form id="approval" style="display: none" method="GET" action="approvere">
         <label for="rID">Enter rID: </label>
@@ -36,7 +42,7 @@
         <input type = "submit" value = "Approve Reimbursement">
     </form>
 
-    <button onclick="showHideMessage()">Approve Reimbursement</button>
+    <button onclick="showHideMessage()">Add Message</button>
     <form id="message" style="display: none" method="GET" action="message">
         <label for="rID">Enter rID: </label>
         <input type="text" name="rID" value="">
@@ -63,11 +69,8 @@
             </tr>
         </table>
     </form>
-    <!--
-    <footer>
-        <a href="tuitionform.html">Submit new reimbursement request</a>
-    </footer>
-    -->
+    
+    
     <script src='JS/suphome.js'></script>
 </body>
 

@@ -367,23 +367,24 @@ public class reDaoImpl implements reDao {
 
 	@Override
 	public void approveReimbursement(int rID, String role) {
-		String sql = "update Reimbursements set ? = 'approved' where rID = ?";
-		String status = "";
+		String sql = ""; 
+		
 		
 		if (role.equals("supervisor")){
-			status = "dsStatus";
+			sql = "update Reimbursements set dsStatus = 'APPROVED' where rID = ?";
 		} else if (role.equals("dephead")){
-			status = "dhStatus";
+			sql = "update Reimbursements set dhStatus = 'APPROVED' where rID = ?";
 		} else if (role.contentEquals("benco")) {
-			status = "bcStatus";
+			sql = "update Reimbursements set dhStatus = 'APPROVED' where rID = ?";
 		}
 		
 		PreparedStatement stmt;
 		
 		try {
 			stmt = conn.prepareStatement(sql);
-			stmt.setString(1, status);
-			stmt.setInt(2, rID);
+			info("in ApproveReimbursement: " + stmt);
+			stmt.setInt(1, rID);
+			info("prepared statement: " + stmt);
 			stmt.executeUpdate();
 		} catch (SQLException e) {
 			e.printStackTrace();

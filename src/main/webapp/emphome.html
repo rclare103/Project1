@@ -20,8 +20,9 @@
                 <th>Event Type</th>
                 <th>Event Date</th>
                 <th>Event Cost</th>
-                <th>Status</th>
-                <th></th>
+                <th>Supervisor Status</th>
+                <th>Department Head Status</th>
+                <th>Benefits Coordinator Status</th>
             </tr>
         </table>
 
@@ -29,10 +30,25 @@
     <footer>
         <a href="tuitionform.html">Submit new reimbursement request</a>
     </footer>
+
     <form method = "GET" action = "logout">
         <button type = "submit">Log Out</button>
     </form>
-    
+
+    <button onclick="viewMessages()">View Messages</button>
+    <form id = "viewMessage" style = "display:none">
+        <label for = "rIDmess">Enter rID: </label>
+        <input type = "text" name = "rIDmess" id = "rIDmess">
+        <button id = "viewMess">See messages</button>
+        <table id = "messTable">
+            <tr>
+                <th>Reimbursement ID</th>
+                <th>Supervisor Message</th>
+                <th>Department Head Message</th>
+                <th>Benefits Coordinator Message</th>
+            </tr>
+        </table>
+    </form>
     <script src='JS/emphome.js'></script>
 </body>
 
