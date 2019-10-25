@@ -30,14 +30,14 @@
         <button type="submit">Log Out</button>
     </form>
     <button onclick="showHideApprove()">Approve Reimbursement</button>
-    <form id="approval" style="display: block" method="GET" action="approvere">
+    <form id="approval" style="display: none" method="GET" action="approvere">
         <label for="rID">Enter rID: </label>
         <input type="text" name="rID" value="">
         <input type = "submit" value = "Approve Reimbursement">
     </form>
 
     <button onclick="showHideMessage()">Approve Reimbursement</button>
-    <form id="message" style="display: block" method="GET" action="message">
+    <form id="message" style="display: none" method="GET" action="message">
         <label for="rID">Enter rID: </label>
         <input type="text" name="rID" value="">
         <div class="form-group" align="left">
@@ -50,11 +50,18 @@
         <input type = "submit" value = "Send Message">
     </form>
 
-    <button onclick="viewMessages()">Approve Reimbursement</button>
-    <form id = "viewMessage" style = "display:block" method = "POST" action = "message">
+    <button onclick="viewMessages()">View Messages</button>
+    <form id = "viewMessage" style = "display:none">
         <label for = "rIDmess">Enter rID: </label>
-        <input type = "text" name = "rIDmess" value = "">
-        <input type = "submit" value = "view Message">
+        <input type = "text" name = "rIDmess" id = "rIDmess">
+        <button id = "viewMess">See messages</button>
+        <table id = "messTable">
+            <tr>
+                <th>Reimbursement ID</th>
+                <th>DH Message</th>
+                <th>BC Message</th>
+            </tr>
+        </table>
     </form>
     <!--
     <footer>

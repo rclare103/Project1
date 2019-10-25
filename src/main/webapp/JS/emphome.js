@@ -16,6 +16,7 @@ function displayReimbursementList(reList){
     }    
 }
 
+
 function getStatus(re){
     let status = "";
     if (re.bcStatus === "approved" && re.dhStatus === "approved"){

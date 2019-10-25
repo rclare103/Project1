@@ -8,6 +8,20 @@ class Reimbursement{
     }
 }
 
+class Message{
+    constructor(rID, dsMessage, dhMessage, bcMessage){
+        this.rID = rID;
+        this.dsMessage = dsMessage;
+        this.dhMessage = dhMessage;
+        this.bcMessage = bcMessage;
+    }
+}
+
+window.onload = function(){
+    this.getMessages();
+}
+var messageList;
+
 function displayReimbursementList(reList){
     let table = document.getElementById("reTable");
     
@@ -70,6 +84,39 @@ function getReimbursements() {
     }
     xhr.open("GET", "emphome", true);
     xhr.send();
+}
+
+function getMessages(){
+    let xhr = new XMLHttpRequest();
+    xhr.onreadystatechange = function(){
+        if (xhr.readyState === 4){
+            if (xhr.status === 200){
+                messageList = JSON.parse(xhr.responseText);
+            } else{
+                document.getElementById("reHeader").innerHTML = "Your messages: failed to load";
+            }
+        } else{
+            document.getElementById("reHeader").innerHTML = "Fetching Request";
+        }
+    }
+    xhr.open("POST", "message", true);
+    xhr.send();
+}
+
+function displayMessages(){
+    let rIDmess = document.getElementById("rIDmess").value;
+    let messTable = document.getElementById("messTable");
+    for (message of MessageList){
+        if (message.rID === rIDmess){
+            let newRow = document.createElement("tr");
+            let reIDCol = document.createElement("td");
+            reIDCol.innerHTML = message.rID;
+            let dhMessageCol = document.createElement("td");
+            dhMessageCol.innerHTML = message.dhMessage;
+            let bcMessageCol = document.createElement("td");
+            bcMessageCol.innerHTML = message.bcMessage;
+        }
+    }
 }
 
 function showHideApprove(){

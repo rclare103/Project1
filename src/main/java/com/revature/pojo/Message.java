@@ -1,6 +1,8 @@
 package com.revature.pojo;
 
 public class Message {
+	private int rID;
+	
 	private String dsMessage;
 	
 	private String dhMessage;
@@ -31,6 +33,15 @@ public class Message {
 		this.bcMessage = bcMessage;
 	}
 
+	
+	public int getrID() {
+		return rID;
+	}
+
+	public void setrID(int rID) {
+		this.rID = rID;
+	}
+
 	@Override
 	public int hashCode() {
 		final int prime = 31;
@@ -38,6 +49,7 @@ public class Message {
 		result = prime * result + ((bcMessage == null) ? 0 : bcMessage.hashCode());
 		result = prime * result + ((dhMessage == null) ? 0 : dhMessage.hashCode());
 		result = prime * result + ((dsMessage == null) ? 0 : dsMessage.hashCode());
+		result = prime * result + rID;
 		return result;
 	}
 
@@ -65,16 +77,20 @@ public class Message {
 				return false;
 		} else if (!dsMessage.equals(other.dsMessage))
 			return false;
+		if (rID != other.rID)
+			return false;
 		return true;
 	}
 
 	@Override
 	public String toString() {
-		return "Message [dsMessage=" + dsMessage + ", dhMessage=" + dhMessage + ", bcMessage=" + bcMessage + "]";
+		return "Message [rID=" + rID + ", dsMessage=" + dsMessage + ", dhMessage=" + dhMessage + ", bcMessage="
+				+ bcMessage + "]";
 	}
 
-	public Message(String dsMessage, String dhMessage, String bcMessage) {
+	public Message(int rID, String dsMessage, String dhMessage, String bcMessage) {
 		super();
+		this.rID = rID;
 		this.dsMessage = dsMessage;
 		this.dhMessage = dhMessage;
 		this.bcMessage = bcMessage;
@@ -84,6 +100,8 @@ public class Message {
 		super();
 		// TODO Auto-generated constructor stub
 	}
+
+	
 	
 	
 }

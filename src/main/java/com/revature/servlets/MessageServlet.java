@@ -1,6 +1,8 @@
 package com.revature.servlets;
 
 import java.io.IOException;
+import java.util.List;
+
 import javax.servlet.ServletException;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
@@ -53,13 +55,13 @@ public class MessageServlet extends HttpServlet {
 	 * @see HttpServlet#doPost(HttpServletRequest request, HttpServletResponse response)
 	 */
 	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-		User user = (User) request.getSession().getAttribute("user");
-		int rID = Integer.parseInt(request.getParameter("rIDmess"));
+		//User user = (User) request.getSession().getAttribute("user");
+		//int rID = Integer.parseInt(request.getParameter("rIDmess"));
 		ObjectMapper om = new ObjectMapper();
-		Message message = messageService.findMessages(rID);
-		
+		List<Message> messageList = messageService.findAllMessages();
+		debug("Message list: " + messageList);
 		response.setContentType("text/plain");
-		response.getWriter().write(om.writeValueAsString(message));
+		response.getWriter().write(om.writeValueAsString(messageList));
 	}
 
 }

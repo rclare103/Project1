@@ -1,5 +1,7 @@
 package com.revature.service;
 
+import java.util.List;
+
 import com.revature.dao.MessageDaoImpl;
 import com.revature.pojo.Message;
 
@@ -21,6 +23,11 @@ public class MessageServiceImpl implements MessageService {
 	@Override
 	public Message findMessages(int rID) {
 		return messageDao.getMessages(rID);
+	}
+
+	@Override
+	public List<Message> findAllMessages() {
+		return messageDao.getAllMessages();
 	}
 
 }
