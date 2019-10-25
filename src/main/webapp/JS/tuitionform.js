@@ -28,7 +28,7 @@ function getAvailableReimbursement(){
     xhr.open("GET", "tuitionform", true);
     xhr.send();
 }
-var eventRe = this.getCost();
+
 function getCost(){
     let constant = 0;
     let eventType = this.getEventType();
@@ -37,7 +37,7 @@ function getCost(){
         constant = .8;
     } else if (eventType === "seminar"){
         constant = .6;
-    } else if (eventType === "certification_preparation_class"){
+    } else if (eventType === "certification_preparation_course"){
         constant = .75;
     } else if (eventType === "certification"){
         constant = 1;
@@ -49,10 +49,12 @@ function getCost(){
 
     return constant * cost;
 }
-if (eventRe >= avail){
-    eventRe = avail;
-}
+
 function displayCost(){
+    var eventRe = this.getCost();
+    if (eventRe >= avail){
+        eventRe = avail;
+    }
     document.getElementById('estimate').innerHTML = eventRe;
 }
 /*
