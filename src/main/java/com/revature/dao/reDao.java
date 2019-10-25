@@ -4,6 +4,7 @@ import java.util.List;
 
 import com.revature.pojo.Reimbursement;
 import com.revature.pojo.User;
+import static com.revature.util.LoggerUtil.*;
 
 public interface reDao {
 	// reimbursement Dao

@@ -25,12 +25,13 @@ public class Driver {
 		
 		
 		
-		String username = "testUser";
-		String password = "testPassword";
+		String username = "supervisor";
+		String password = "supervisor";
 		User user = userService.loginUser(username, password);
 		System.out.println(user.getFirstName());
 		
-		List<Reimbursement> reList = reService.findReimbursementByUser(user.getUserID());
-		System.out.println(reList.get(0));
+		//List<Reimbursement> reList = reService.findReimbursementByUser(user.getUserID());
+		List<Reimbursement> reList2 = reService.findReimbursementBySup(user.getUserID());
+		System.out.println("Driver: " + reList2.get(0));
 	}
 }

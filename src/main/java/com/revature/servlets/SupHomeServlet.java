@@ -37,7 +37,7 @@ public class SupHomeServlet extends HttpServlet {
 	 */
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		User user = (User) request.getSession().getAttribute("user");
-		info("Succesfully entered doGet userID = " + user.getUserID());
+		info("Succesfully entered doGet SupHomeServlet userID = " + user.getUserID());
 		ObjectMapper om = new ObjectMapper();
 		om.registerModule(new JavaTimeModule());
 				

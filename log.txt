@@ -1,0 +1,15 @@
+2019-10-24 20:58:19 INFO  root(1):25 entering reSup try
+2019-10-24 20:58:49 INFO  root(1):25 entering reSup try
+2019-10-24 20:59:32 INFO  root(1):25 entering reSup try
+2019-10-24 21:04:13 INFO  root(1):25 entering reSup try
+2019-10-24 21:17:39 DEBUG root(1):21 userID 5
+2019-10-24 21:17:39 INFO  root(1):25 entering reSup try
+2019-10-24 21:17:54 DEBUG root(1):21 userID 4
+2019-10-24 21:17:54 INFO  root(1):25 entering reSup try
+2019-10-24 21:17:54 INFO  root(1):25 entering reSup while
+2019-10-24 21:20:40 DEBUG root(1):21 userID 4
+2019-10-24 21:20:40 INFO  root(1):25 entering reSup try
+2019-10-24 21:20:40 INFO  root(1):25 entering reSup while
+2019-10-24 21:20:59 DEBUG root(1):21 userID 4
+2019-10-24 21:20:59 INFO  root(1):25 entering reSup try
+2019-10-24 21:20:59 INFO  root(1):25 entering reSup while

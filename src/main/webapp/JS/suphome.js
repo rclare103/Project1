@@ -82,7 +82,7 @@ function getReimbursements() {
             document.getElementById("reHeader").innerHTML = "Fetching Request";
         }
     }
-    xhr.open("GET", "emphome", true);
+    xhr.open("GET", "suphome", true);
     xhr.send();
 }
 
@@ -96,7 +96,7 @@ function getMessages(){
                 document.getElementById("reHeader").innerHTML = "Your messages: failed to load";
             }
         } else{
-            document.getElementById("reHeader").innerHTML = "Fetching Request";
+            document.getElementById("reHeader").innerHTML = "Fetching Messages";
         }
     }
     xhr.open("POST", "message", true);

@@ -13,6 +13,7 @@ import java.util.List;
 import com.revature.pojo.Reimbursement;
 import com.revature.pojo.User;
 import com.revature.util.ConnectionFactory;
+import static com.revature.util.LoggerUtil.*;
 
 public class reDaoImpl implements reDao {
 	/*
@@ -242,19 +243,22 @@ public class reDaoImpl implements reDao {
 	@Override
 	public List<Reimbursement> getReimbursementBySup(int userID) {
 		
-		String sql = "select * from Reimbursements where userID in "
-				+ "(select userID from Users where supervisor = ?)";
+		String sql = "select * from Reimbursements where userID in (select userID from Users where supervisor = ?)";
 		
 		List<Reimbursement> reList = new ArrayList<Reimbursement>();
 		
 		PreparedStatement stmt;
 		
+		debug("userID " + userID);
+		
 		try {
 			stmt = conn.prepareStatement(sql);
 			stmt.setInt(1, userID);
 			ResultSet rs = stmt.executeQuery();
+			info("entering reSup try");
 			while(rs.next()) {
 				Reimbursement re = new Reimbursement();
+				info("entering reSup while");
 				re.setrID(rs.getInt(1));
 				re.setUserID(rs.getInt(2));
 				re.setEventType(rs.getString(3));
