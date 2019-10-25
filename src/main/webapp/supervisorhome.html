@@ -41,6 +41,10 @@
     <form id="approval" style="display: none" method="GET" action="approvere">
         <label for="rID">Enter rID: </label>
         <input type="text" name="rID" value="">
+        <input type = "radio" name = "approveDeny" value = "APPROVED">
+        <input type = "radio" name = "approveDeny" value = "DENIED">
+        <textarea class="form-control" type="textarea" name="approvedenymess" id="messagebox"
+                placeholder="Enter your message:" maxlength="6000" rows="7" cols="50"></textarea>
         <input type = "submit" value = "Approve Reimbursement">
     </form>
 

@@ -63,8 +63,8 @@ public class ReimbursementServiceImpl implements ReimbursementService {
 	}
 
 	@Override
-	public void approveReimbursement(int rID, String role) {
-		reDao.approveReimbursement(rID, role);
+	public void approveReimbursement(int rID, String role, String status) {
+		reDao.approveReimbursement(rID, role, status);
 		
 	}
 

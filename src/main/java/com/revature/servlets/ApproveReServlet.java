@@ -8,7 +8,10 @@ import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
+import com.revature.pojo.Message;
 import com.revature.pojo.User;
+import com.revature.service.MessageService;
+import com.revature.service.MessageServiceImpl;
 import com.revature.service.ReimbursementService;
 import com.revature.service.ReimbursementServiceImpl;
 
@@ -18,6 +21,7 @@ import com.revature.service.ReimbursementServiceImpl;
 public class ApproveReServlet extends HttpServlet {
 	private static final long serialVersionUID = 1L;
 	private static ReimbursementService reService = new ReimbursementServiceImpl();
+	private static MessageService messageService = new MessageServiceImpl();
        
     /**
      * @see HttpServlet#HttpServlet()
@@ -38,8 +42,16 @@ public class ApproveReServlet extends HttpServlet {
 		debug("Succesfully loaded user in ApproveReServlet: " + user.getUsername());
 		String role = user.getRole();
 		int rID = Integer.parseInt(request.getParameter("rID"));
+		String status = request.getParameter("approveDeny");
+		debug("approvere status: " + status);
+		String message = request.getParameter("approvedenymess");
+		Message mess = messageService.findMessages(rID);
+		if (mess.getrID() == 0) {
+			messageService.makeMessage(rID);
+		}
 		
-		reService.approveReimbursement(rID, role);
+		messageService.addMessage(message, role, rID);
+		reService.approveReimbursement(rID, role, status);
 		if (user.getRole().equals("supervisor")){ 
 			response.sendRedirect("supervisorhome.html");
 		} else if (user.getRole().equals("dephead")){

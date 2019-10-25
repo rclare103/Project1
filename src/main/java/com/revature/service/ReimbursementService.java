@@ -27,7 +27,7 @@ public interface ReimbursementService {
 	
 	public void addMessage(String message, String role, int rID);
 	
-	public void approveReimbursement(int rID, String role);
+	public void approveReimbursement(int rID, String role, String status);
 	
 	public void addFinalGrade(int rID, String finalGrade);
 }

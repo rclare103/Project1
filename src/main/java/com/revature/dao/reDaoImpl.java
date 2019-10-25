@@ -382,7 +382,7 @@ public class reDaoImpl implements reDao {
 	}
 
 	@Override
-	public void approveReimbursement(int rID, String role) {
+	public void approveReimbursement(int rID, String role, String status) {
 		String sql = ""; 
 		
 		
