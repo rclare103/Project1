@@ -21,7 +21,9 @@ class Message{
     }
 }
 
+var reIDList = new Array();
 var messageList;
+var reList;
 
 function displayReimbursementList(reList){
     let table = document.getElementById("reTable");
@@ -118,18 +120,10 @@ function getMessages(){
 }
 
 function displayMessages(){
-    let rIDmess = document.getElementById("rIDmess").value;
     let messTable = document.getElementById("messTable");
-    for (message of MessageList){
-        if (message.rID === rIDmess){
-            let newRow = document.createElement("tr");
-            let reIDCol = document.createElement("td");
-            reIDCol.innerHTML = message.rID;
-            let dhMessageCol = document.createElement("td");
-            dhMessageCol.innerHTML = message.dhMessage;
-            let bcMessageCol = document.createElement("td");
-            bcMessageCol.innerHTML = message.bcMessage;
-            messTable.appendChild(newRow);
+    for (message of messageList) {
+        if (reIDList.includes(message.rID)) {
+            messTable.appendChild(addMessageRow(message));
         }
     }
 }
@@ -160,7 +154,19 @@ function viewMessages(){
         x.style.display = "none";
     }
 }
-
+function addMessageRow(message) {
+    let newRow = document.createElement("tr");
+    let reIDCol = document.createElement("td");
+    reIDCol.innerHTML = message.rID;
+    let dhMessageCol = document.createElement("td");
+    dhMessageCol.innerHTML = message.dhMessage;
+    let bcMessageCol = document.createElement("td");
+    bcMessageCol.innerHTML = message.bcMessage;
+    newRow.appendChild(reIDCol);
+    newRow.appendChild(dhMessageCol);
+    newRow.appendChild(bcMessageCol);
+    return newRow;
+}
 window.onload = function(){
     this.getReimbursements();
     this.getMessages();
