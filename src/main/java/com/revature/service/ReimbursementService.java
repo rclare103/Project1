@@ -29,5 +29,4 @@ public interface ReimbursementService {
 	
 	public void approveReimbursement(int rID, String role);
 	
-	public Reimbursement checkDates(Reimbursement re);
 }
