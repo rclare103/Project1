@@ -138,5 +138,5 @@ function addMessageRow(message) {
 }
 window.onload = function(){
     this.getReimbursements();
-    this.getMessages();
+    this.setTimeout(this.getMessages(), 1000);
 }

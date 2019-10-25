@@ -43,6 +43,11 @@ public class MessageServlet extends HttpServlet {
 		debug("Succesfully loaded user in MessageServlet: " + user.getUsername());
 		int rID = Integer.parseInt(request.getParameter("rIDshow"));
 		String message = request.getParameter("message");
+		Message mess = messageService.findMessages(rID);
+		if (mess.getrID() == 0) {
+			messageService.makeMessage(rID);
+		}
+		
 		String role = user.getRole();
 		
 		messageService.addMessage(message, role, rID);

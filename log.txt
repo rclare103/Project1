@@ -19,3 +19,28 @@
 2019-10-25 01:23:50 INFO  root(1):25 entering reSup while
 2019-10-25 01:23:50 INFO  root(1):25 entering reSup while
 2019-10-25 01:23:50 DEBUG root(1):21 creating Message with rID: 3
+2019-10-25 01:39:57 DEBUG root(1):21 userID 4
+2019-10-25 01:39:57 INFO  root(1):25 entering reSup try
+2019-10-25 01:39:57 INFO  root(1):25 entering reSup while
+2019-10-25 01:39:57 INFO  root(1):25 entering reSup while
+2019-10-25 01:39:57 INFO  root(1):25 entering reSup while
+2019-10-25 01:40:34 DEBUG root(1):21 userID 4
+2019-10-25 01:40:34 INFO  root(1):25 entering reSup try
+2019-10-25 01:40:34 INFO  root(1):25 entering reSup while
+2019-10-25 01:40:34 INFO  root(1):25 entering reSup while
+2019-10-25 01:40:34 INFO  root(1):25 entering reSup while
+2019-10-25 01:42:36 DEBUG root(1):21 userID 4
+2019-10-25 01:42:36 INFO  root(1):25 entering reSup try
+2019-10-25 01:42:36 INFO  root(1):25 entering reSup while
+2019-10-25 01:42:36 INFO  root(1):25 entering reSup while
+2019-10-25 01:42:36 INFO  root(1):25 entering reSup while
+2019-10-25 02:34:25 DEBUG root(1):21 userID 4
+2019-10-25 02:34:25 INFO  root(1):25 entering reSup try
+2019-10-25 02:34:25 INFO  root(1):25 entering reSup while
+2019-10-25 02:34:25 INFO  root(1):25 entering reSup while
+2019-10-25 02:34:25 INFO  root(1):25 entering reSup while
+2019-10-25 02:34:45 DEBUG root(1):21 userID 4
+2019-10-25 02:34:45 INFO  root(1):25 entering reSup try
+2019-10-25 02:34:45 INFO  root(1):25 entering reSup while
+2019-10-25 02:34:45 INFO  root(1):25 entering reSup while
+2019-10-25 02:34:45 INFO  root(1):25 entering reSup while

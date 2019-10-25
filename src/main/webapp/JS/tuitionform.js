@@ -1,6 +1,6 @@
 function getEventType(){
-    let eventType = document.getElementsByName("eventType");
-    for (i of eventType){
+    let eventTypes = document.getElementsByName("eventType");
+    for (i of eventTypes){
         if (i.checked){
             return i.value;
         }
@@ -11,7 +11,7 @@ function getCost(){
     let constant = 0;
     let eventType = this.getEventType();
     let cost = document.getElementById("cost").value;
-    if (eventType === "university_cost"){
+    if (eventType === "university_course"){
         constant = .8;
     } else if (eventType === "seminar"){
         constant = .6;
@@ -29,9 +29,9 @@ function getCost(){
 }
 
 function displayCost(){
-    document.getElementById("estimate").innerHTML = `${cost}`
+    document.getElementById('estimate').innerHTML = this.getCost();
 }
-
+/*
 window.onload = function(){
     document.getElementById("estimateRe").addEventListener("click", this.getCost);
-}
+}*/

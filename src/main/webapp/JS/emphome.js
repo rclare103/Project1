@@ -12,7 +12,8 @@ class Reimbursement {
 
 window.onload = function () {
     this.getReimbursements();
-    this.getMessages();
+    this.setTimeout(this.getMessages(), 1000);
+    alert("hello");
 }
 
 var reList;

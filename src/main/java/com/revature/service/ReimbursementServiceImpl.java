@@ -1,5 +1,6 @@
 package com.revature.service;
 
+import java.time.LocalDate;
 import java.util.List;
 
 import com.revature.dao.reDaoImpl;
@@ -64,6 +65,12 @@ public class ReimbursementServiceImpl implements ReimbursementService {
 	public void approveReimbursement(int rID, String role) {
 		reDao.approveReimbursement(rID, role);
 		
+	}
+
+	@Override
+	public Reimbursement checkDates(Reimbursement re) {
+		LocalDate now;
+		return null;
 	}
 	
 

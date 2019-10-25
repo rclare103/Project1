@@ -108,6 +108,7 @@ public class TuitionFormServlet extends HttpServlet {
 		re.setDhStatus(dhStatus);
 		
 		reService.makeReimbursement(re);
+		
 		messageService.makeMessage(re.getrID());
 		
 		response.sendRedirect("emphome.html");

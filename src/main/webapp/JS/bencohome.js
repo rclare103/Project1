@@ -70,7 +70,7 @@ function getReimbursements() {
             document.getElementById("reHeader").innerHTML = "Fetching Request";
         }
     }
-    xhr.open("GET", "suphome", true);
+    xhr.open("GET", "bencohome", true);
     xhr.send();
 }
 
@@ -91,6 +91,7 @@ function getMessages(){
     xhr.send();
 }
 
+/*
 function displayMessages(){
     let messTable = document.getElementById("messTable");
     for (message of messageList) {
@@ -99,6 +100,7 @@ function displayMessages(){
         }
     }
 }
+*/
 
 function showHideApprove(){
     let x = document.getElementById("approval");
@@ -109,6 +111,7 @@ function showHideApprove(){
     }
 }
 
+/*
 function showHideMessage(){
     let x = document.getElementById("message");
     if (x.style.display === "none"){
@@ -130,16 +133,14 @@ function addMessageRow(message) {
     let newRow = document.createElement("tr");
     let reIDCol = document.createElement("td");
     reIDCol.innerHTML = message.rID;
-    let dhMessageCol = document.createElement("td");
-    dhMessageCol.innerHTML = message.dhMessage;
     let bcMessageCol = document.createElement("td");
     bcMessageCol.innerHTML = message.bcMessage;
     newRow.appendChild(reIDCol);
-    newRow.appendChild(dhMessageCol);
     newRow.appendChild(bcMessageCol);
     return newRow;
 }
+*/
 window.onload = function(){
     this.getReimbursements();
-    this.setTimeout(this.getMessages(), 1000);
+    //this.setTimeout(this.getMessages(), 1000);
 }

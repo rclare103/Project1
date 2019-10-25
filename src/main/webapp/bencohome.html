@@ -1,0 +1,67 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <title>
+        View Reimbursement Submission
+    </title>
+    <link rel="stylesheet" type="text/css" href="CSS\viewReimbursementcss.css">
+
+</head>
+
+<body>
+    <div class='container'>
+        <h1 id="reHeader">
+            Pending Reimbursements:
+        </h1>
+        <table id="reTable">
+            <tr>
+                <th>Reimbursement ID</th>
+                <th>User ID</th>
+                <th>Event Type</th>
+                <th>Event Date</th>
+                <th>Event Cost</th>
+                <th>Description</th>
+                <th>Justification</th>
+                <th>Supervisor Status</th>
+                <th>Department Head Status</th>
+                <th>Benefits Coordinator Status</th>
+                
+            </tr>
+        </table>
+
+    </div>
+
+    <form method="GET" action="logout">
+        <button type="submit">Log Out</button>
+    </form>
+
+    
+    <button onclick="showHideApprove()">Approve Reimbursement</button>
+    <form id="approval" style="display: none" method="GET" action="approvere">
+        <label for="rID">Enter rID: </label>
+        <input type="text" name="rID" value="">
+        <input type = "submit" value = "Approve Reimbursement">
+    </form>
+
+    <button onclick="showHideMessage()">Add Message</button>
+    <form id="message" style="display: none" method="GET" action="message">
+        <label for="rIDshow">Enter rID: </label>
+        <input type="text" name="rIDshow" value="">
+        <div class="form-group">
+            <label for="Message">
+                Event Message:</label>
+            <br>
+            <textarea class="form-control" type="textarea" name="message" id="messagebox"
+                placeholder="Enter your message:" maxlength="6000" rows="7" cols="50"></textarea>
+        </div>
+        <input type = "submit" value = "Send Message">
+    </form>
+
+    
+    
+    <script src='JS/bencohome.js'></script>
+</body>
+
+
+</html>

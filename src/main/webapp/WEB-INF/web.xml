@@ -108,4 +108,14 @@
     <servlet-name>DHHomeServlet</servlet-name>
     <url-pattern>/dhhome</url-pattern>
   </servlet-mapping>
+  <servlet>
+    <description></description>
+    <display-name>BencoHomeServlet</display-name>
+    <servlet-name>BencoHomeServlet</servlet-name>
+    <servlet-class>com.revature.servlets.BencoHomeServlet</servlet-class>
+  </servlet>
+  <servlet-mapping>
+    <servlet-name>BencoHomeServlet</servlet-name>
+    <url-pattern>/bencohome</url-pattern>
+  </servlet-mapping>
 </web-app>

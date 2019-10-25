@@ -18,6 +18,7 @@ public class MessageDaoImpl implements MessageDao {
 	@Override
 	public void createMessage(int rID) {
 		debug("creating Message with rID: " + rID);
+		
 		String sql = "insert into Messages (rID) values (?)";
 		PreparedStatement stmt;
 		

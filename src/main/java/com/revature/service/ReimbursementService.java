@@ -28,4 +28,6 @@ public interface ReimbursementService {
 	public void addMessage(String message, String role, int rID);
 	
 	public void approveReimbursement(int rID, String role);
+	
+	public Reimbursement checkDates(Reimbursement re);
 }

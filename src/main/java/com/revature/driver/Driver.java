@@ -3,6 +3,7 @@ package com.revature.driver;
 import java.util.List;
 
 import com.revature.dao.UserDaoImpl;
+import com.revature.pojo.Message;
 import com.revature.pojo.Reimbursement;
 import com.revature.pojo.User;
 import com.revature.service.ReimbursementService;
@@ -35,6 +36,13 @@ public class Driver {
 		//List<Reimbursement> reList = reService.findReimbursementByUser(user.getUserID());
 		List<Reimbursement> reList2 = reService.findReimbursementBySup(user.getUserID());
 		System.out.println("Driver: " + reList2.get(0));
-		messageService.makeMessage(3);
+		int a, b, c;
+		a = b = 0;
+		c = 1;
+		if (a == 0 && b == 0 && c == 0) {
+			System.out.println("in if statement");
+			
+		
+		}
 	}
 }
