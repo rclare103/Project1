@@ -384,8 +384,8 @@ public class reDaoImpl implements reDao {
 			sql = "update Reimbursements set dsStatus = 'APPROVED' where rID = ?";
 		} else if (role.equals("dephead")){
 			sql = "update Reimbursements set dhStatus = 'APPROVED' where rID = ?";
-		} else if (role.contentEquals("benco")) {
-			sql = "update Reimbursements set dhStatus = 'APPROVED' where rID = ?";
+		} else if (role.equals("benco")) {
+			sql = "update Reimbursements set bcStatus = 'APPROVED' where rID = ?";
 		}
 		
 		PreparedStatement stmt;

@@ -111,7 +111,7 @@ function showHideApprove(){
     }
 }
 
-/*
+
 function showHideMessage(){
     let x = document.getElementById("message");
     if (x.style.display === "none"){
@@ -121,6 +121,7 @@ function showHideMessage(){
     }
 }
 
+/*
 function viewMessages(){
     let x = document.getElementById("viewMessage");
     if (x.style.display === "none"){

@@ -12,8 +12,8 @@ class Reimbursement {
 
 window.onload = function () {
     this.getReimbursements();
-    this.setTimeout(this.getMessages(), 1000);
-    alert("hello");
+    //this.setTimeout(this.getMessages(), 1000);
+    //alert("hello");
 }
 
 var reList;
@@ -92,6 +92,8 @@ function getMessages() {
 }
 
 function viewMessages() {
+
+    getMessages();
     let x = document.getElementById("viewMessage");
     if (x.style.display === "none") {
         x.style.display = "block";

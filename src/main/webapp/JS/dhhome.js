@@ -119,6 +119,7 @@ function showHideMessage(){
 }
 
 function viewMessages(){
+    getMessages();
     let x = document.getElementById("viewMessage");
     if (x.style.display === "none"){
         x.style.display = "block";
@@ -138,5 +139,5 @@ function addMessageRow(message) {
 }
 window.onload = function(){
     this.getReimbursements();
-    this.setTimeout(this.getMessages(), 1000);
+    //this.setTimeout(this.getMessages(), 1000);
 }
