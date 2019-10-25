@@ -15,6 +15,7 @@ import com.revature.pojo.Reimbursement;
 import com.revature.pojo.User;
 import com.revature.service.MessageServiceImpl;
 import com.revature.service.ReimbursementServiceImpl;
+import com.revature.util.ReimbursementCalculatorImpl;
 
 import static com.revature.util.LoggerUtil.*;
 
@@ -26,6 +27,7 @@ public class TuitionFormServlet extends HttpServlet {
 	private static final long serialVersionUID = 1L;
     private static ReimbursementServiceImpl reService = new ReimbursementServiceImpl();
     private static MessageServiceImpl messageService = new MessageServiceImpl();
+    private static ReimbursementCalculatorImpl reCalc = new ReimbursementCalculatorImpl();
     /**
      * @see HttpServlet#HttpServlet()
      */
@@ -106,6 +108,7 @@ public class TuitionFormServlet extends HttpServlet {
 		re.setBcStatus(bcStatus);
 		re.setDsStatus(dsStatus);
 		re.setDhStatus(dhStatus);
+		re.setEstimatedReimbursement(reCalc.getReimbursementCost(re));
 		
 		reService.makeReimbursement(re);
 		

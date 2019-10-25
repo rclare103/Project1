@@ -33,7 +33,7 @@ function addRow(re){
     let date = document.createElement("td");
     date.innerHTML = re.eventDate;
     let cost = document.createElement("td");
-    cost.innerHTML = re.cost;
+    cost.innerHTML = re.estimatedReimbursement;
     let descriptioncol = document.createElement("td");
     descriptioncol.innerHTML = re.description;
     let justificationcol = document.createElement("td");

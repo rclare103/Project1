@@ -3,6 +3,8 @@ package com.revature.pojo;
 import java.time.LocalDate;
 import java.time.LocalTime;
 
+import com.revature.dao.UserDaoImpl;
+
 public class Reimbursement {
 	private int rID;
 	private int userID;
@@ -21,6 +23,7 @@ public class Reimbursement {
 	private String bcStatus;
 	//private String message;
 	private String finalGrade;
+	private double EstimatedReimbursement;
 	
 	public int getrID() {
 		return rID;
@@ -100,12 +103,23 @@ public class Reimbursement {
 		return dsStatus;
 	}
 	public void setDsStatus(String dsStatus) {
-		this.dsStatus = dsStatus;
+		UserDaoImpl userDao = new UserDaoImpl();
+		User user = userDao.getUser(this.getUserID());
+		if (user.getSupervisor() == user.getDepartmentHead()) {
+			;
+		}else {
+			this.dsStatus = dsStatus;
+		}
 	}
 	public String getDhStatus() {
 		return dhStatus;
 	}
 	public void setDhStatus(String dhStatus) {
+		UserDaoImpl userDao = new UserDaoImpl();
+		User user = userDao.getUser(this.getUserID());
+		if (user.getSupervisor() == user.getDepartmentHead()) {
+			this.dsStatus = dhStatus;
+		}
 		this.dhStatus = dhStatus;
 	}
 	public String getBcStatus() {
@@ -130,12 +144,22 @@ public class Reimbursement {
 	public void setFinalGrade(String finalGrade) {
 		this.finalGrade = finalGrade;
 	}
+	
+	
+	public double getEstimatedReimbursement() {
+		return EstimatedReimbursement;
+	}
+	public void setEstimatedReimbursement(double estimatedReimbursement) {
+		EstimatedReimbursement = estimatedReimbursement;
+	}
 	@Override
 	public int hashCode() {
 		final int prime = 31;
 		int result = 1;
-		result = prime * result + ((bcStatus == null) ? 0 : bcStatus.hashCode());
 		long temp;
+		temp = Double.doubleToLongBits(EstimatedReimbursement);
+		result = prime * result + (int) (temp ^ (temp >>> 32));
+		result = prime * result + ((bcStatus == null) ? 0 : bcStatus.hashCode());
 		temp = Double.doubleToLongBits(cost);
 		result = prime * result + (int) (temp ^ (temp >>> 32));
 		result = prime * result + ((description == null) ? 0 : description.hashCode());
@@ -148,7 +172,6 @@ public class Reimbursement {
 		result = prime * result + ((gradingFormat == null) ? 0 : gradingFormat.hashCode());
 		result = prime * result + ((justification == null) ? 0 : justification.hashCode());
 		result = prime * result + ((location == null) ? 0 : location.hashCode());
-		//result = prime * result + ((message == null) ? 0 : message.hashCode());
 		result = prime * result + rID;
 		result = prime * result + ((submissionDate == null) ? 0 : submissionDate.hashCode());
 		result = prime * result + ((submissionTime == null) ? 0 : submissionTime.hashCode());
@@ -164,6 +187,8 @@ public class Reimbursement {
 		if (getClass() != obj.getClass())
 			return false;
 		Reimbursement other = (Reimbursement) obj;
+		if (Double.doubleToLongBits(EstimatedReimbursement) != Double.doubleToLongBits(other.EstimatedReimbursement))
+			return false;
 		if (bcStatus == null) {
 			if (other.bcStatus != null)
 				return false;
@@ -221,13 +246,6 @@ public class Reimbursement {
 				return false;
 		} else if (!location.equals(other.location))
 			return false;
-		/*
-		if (message == null) {
-			if (other.message != null)
-				return false;
-		} else if (!message.equals(other.message))
-			return false;
-			*/
 		if (rID != other.rID)
 			return false;
 		if (submissionDate == null) {
@@ -250,14 +268,13 @@ public class Reimbursement {
 				+ eventDate + ", eventTime=" + eventTime + ", location=" + location + ", description=" + description
 				+ ", cost=" + cost + ", gradingFormat=" + gradingFormat + ", justification=" + justification
 				+ ", submissionDate=" + submissionDate + ", submissionTime=" + submissionTime + ", dsStatus=" + dsStatus
-				+ ", dhStatus=" + dhStatus + ", bcStatus=" + bcStatus + 
-				//", message=" + message + 
-				", finalGrade="	+ finalGrade + "]";
+				+ ", dhStatus=" + dhStatus + ", bcStatus=" + bcStatus + ", finalGrade=" + finalGrade
+				+ ", EstimatedReimbursement=" + EstimatedReimbursement + "]";
 	}
 	public Reimbursement(int rID, int userID, String eventType, LocalDate eventDate, LocalTime eventTime,
 			String location, String description, double cost, String gradingFormat, String justification,
 			LocalDate submissionDate, LocalTime submissionTime, String dsStatus, String dhStatus, String bcStatus,
-			String message, String finalGrade) {
+			String finalGrade, double estimatedReimbursement) {
 		super();
 		this.rID = rID;
 		this.userID = userID;
@@ -274,13 +291,15 @@ public class Reimbursement {
 		this.dsStatus = dsStatus;
 		this.dhStatus = dhStatus;
 		this.bcStatus = bcStatus;
-		//this.message = message;
 		this.finalGrade = finalGrade;
+		EstimatedReimbursement = estimatedReimbursement;
 	}
 	public Reimbursement() {
 		super();
 		// TODO Auto-generated constructor stub
 	}
+	
+	
 	
 	
 	

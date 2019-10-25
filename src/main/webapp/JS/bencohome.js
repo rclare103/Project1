@@ -23,17 +23,15 @@ function displayReimbursementList(reList){
 function addRow(re){
     let newRow = document.createElement("tr");
     let reIDCol = document.createElement("td");
-    console.log(re.rID);
     reIDCol.innerHTML = re.rID;
     let userIDCol = document.createElement("td");
     userIDCol.innerHTML = re.userID;
-    console.log(re.userID);
     let type = document.createElement("td");
     type.innerHTML = re.eventType;
     let date = document.createElement("td");
     date.innerHTML = re.eventDate;
     let cost = document.createElement("td");
-    cost.innerHTML = re.cost;
+    cost.innerHTML = re.estimatedReimbursement;
     let descriptioncol = document.createElement("td");
     descriptioncol.innerHTML = re.description;
     let justificationcol = document.createElement("td");

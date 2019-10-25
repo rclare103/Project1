@@ -56,7 +56,7 @@ function addRow(re) {
     let date = document.createElement("td");
     date.innerHTML = re.eventDate;
     let costcol = document.createElement("td");
-    costcol.innerHTML = re.cost;
+    costcol.innerHTML = re.estimatedReimbursement;
     let dsstatuscol = document.createElement("td");
     dsstatuscol.innerHTML = re.dsStatus;
     let dhstatuscol = document.createElement("td");

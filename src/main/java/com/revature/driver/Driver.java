@@ -34,15 +34,10 @@ public class Driver {
 		System.out.println(user.getFirstName());
 		
 		//List<Reimbursement> reList = reService.findReimbursementByUser(user.getUserID());
-		List<Reimbursement> reList2 = reService.findReimbursementBySup(user.getUserID());
-		System.out.println("Driver: " + reList2.get(0));
-		int a, b, c;
-		a = b = 0;
-		c = 1;
-		if (a == 0 && b == 0 && c == 0) {
-			System.out.println("in if statement");
+		Reimbursement re = reService.findReimbursementByID(1);
+		System.out.println(re.getEstimatedReimbursement());
 			
 		
 		}
-	}
+	
 }
